@@ -1,66 +1,837 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions - GigsNetwork</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions — GigsNetwork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #4338CA;
+      --brand-mid: #5B5BD6;
+      --brand-light: #EEF2FF;
+      --brand-xlight: #F5F3FF;
+      --danger: #DC2626;
+      --danger-bg: #FEF2F2;
+      --danger-border: #FCA5A5;
+      --warning: #B45309;
+      --warning-bg: #FFFBEB;
+      --warning-border: #FCD34D;
+      --info: #1D4ED8;
+      --info-bg: #EFF6FF;
+      --info-border: #93C5FD;
+      --success: #065F46;
+      --success-bg: #ECFDF5;
+      --success-border: #6EE7B7;
+      --text: #18181B;
+      --text-sub: #52525B;
+      --text-muted: #A1A1AA;
+      --bg: #F4F4F8;
+      --card: #FFFFFF;
+      --border: #E4E4E7;
+      --border-strong: #D4D4D8;
+      --shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+      --shadow-hover: 0 2px 8px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.07);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    body {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(150deg, #06040F 0%, #1A154E 45%, #2D2A80 80%, #4338CA 100%);
+      padding: 64px 24px 88px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(99,102,241,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 30%, rgba(139,92,246,0.2) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 40px);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #C7D2FE;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px;
+      backdrop-filter: blur(8px);
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      color: #FFFFFF;
+      font-size: clamp(30px, 6vw, 48px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      color: rgba(199,210,254,0.85);
+      font-size: 15px; font-weight: 400;
+      max-width: 480px; margin: 0 auto 28px;
+    }
+    .hero-meta {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 6px;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #A5B4FC;
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 100px;
+    }
+
+    /* ── NAV PILLS ── */
+    .doc-nav {
+      display: flex; justify-content: center; gap: 10px;
+      padding: 24px 20px 0;
+      position: relative; z-index: 2;
+      margin-top: -22px;
+    }
+    .doc-nav a {
+      padding: 10px 22px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .doc-nav a.active { background: var(--brand); color: #fff; box-shadow: 0 4px 14px rgba(67,56,202,0.4); }
+    .doc-nav a.inactive { background: var(--card); color: var(--text-sub); border: 1px solid var(--border); }
+    .doc-nav a.inactive:hover { background: var(--brand-light); color: var(--brand); }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 28px 28px 20px; margin-bottom: 24px;
+    }
+    .toc-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: 16px;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 4px;
+    }
+    .toc-link {
+      display: flex; align-items: center; gap: 9px;
+      padding: 8px 10px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sub);
+      font-size: 12.5px; font-weight: 500; transition: all 0.15s;
+    }
+    .toc-link:hover { background: var(--brand-xlight); color: var(--brand); }
+    .toc-n {
+      min-width: 22px; height: 22px; border-radius: 50%;
+      background: var(--brand-light); color: var(--brand);
+      font-size: 10px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION CARD ── */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 36px; margin-bottom: 20px;
+      transition: box-shadow 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); }
+    .card-eyebrow {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 6px;
+    }
+    .card h2 {
+      font-size: 20px; font-weight: 750;
+      color: var(--text); margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--brand-light);
+    }
+    .card h3 {
+      font-size: 15px; font-weight: 700;
+      color: var(--text); margin: 22px 0 10px;
+    }
+    .card p {
+      color: var(--text-sub); font-size: 14px;
+      line-height: 1.75; margin-bottom: 14px;
+    }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul, .card ol {
+      list-style: none; padding: 0; margin: 0 0 16px;
+    }
+    .card ul li, .card ol li {
+      position: relative;
+      padding: 8px 12px 8px 30px;
+      font-size: 13.5px; color: var(--text-sub);
+      line-height: 1.65; border-radius: 6px;
+    }
+    .card ul li:hover, .card ol li:hover { background: var(--bg); }
+    .card ul li::before {
+      content: '›';
+      position: absolute; left: 11px; top: 7px;
+      color: var(--brand); font-size: 16px; font-weight: 700;
+    }
+    .card ol { counter-reset: ol-c; }
+    .card ol li { counter-increment: ol-c; }
+    .card ol li::before {
+      content: counter(ol-c);
+      position: absolute; left: 6px; top: 9px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--brand); color: #fff;
+      font-size: 9px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    strong { color: var(--text); font-weight: 700; }
+    .divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+    /* ── ALERTS ── */
+    .alert {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px 18px; border-radius: var(--radius-sm);
+      margin: 18px 0;
+    }
+    .alert-icon { font-size: 18px; flex-shrink: 0; line-height: 1.5; }
+    .alert-content { flex: 1; }
+    .alert-title {
+      font-size: 12px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+    .alert-text { font-size: 13px; line-height: 1.65; }
+
+    .alert-warning {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-left: 4px solid #F59E0B;
+    }
+    .alert-warning .alert-title { color: #92400E; }
+    .alert-warning .alert-text { color: #78350F; }
+
+    .alert-danger {
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      border-left: 4px solid var(--danger);
+    }
+    .alert-danger .alert-title { color: #7F1D1D; }
+    .alert-danger .alert-text { color: #991B1B; }
+
+    .alert-info {
+      background: var(--info-bg);
+      border: 1px solid var(--info-border);
+      border-left: 4px solid #3B82F6;
+    }
+    .alert-info .alert-title { color: #1E3A8A; }
+    .alert-info .alert-text { color: #1E40AF; }
+
+    .alert-success {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      border-left: 4px solid #10B981;
+    }
+    .alert-success .alert-title { color: #064E3B; }
+    .alert-success .alert-text { color: #065F46; }
+
+    /* ── TWO COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .col-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; }
+    .col-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .col-box ul { margin: 0; }
+    .col-box ul li { font-size: 13px !important; padding: 5px 10px 5px 26px !important; }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: linear-gradient(135deg, #2D2A80 0%, #4338CA 60%, #6D28D9 100%);
+      border-radius: var(--radius); padding: 40px 32px;
+      text-align: center; margin-bottom: 20px;
+    }
+    .contact-card h2 { color: #fff; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .contact-card p { color: rgba(255,255,255,0.75); font-size: 14px; margin-bottom: 22px; }
+    .contact-email {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: #fff; padding: 13px 30px;
+      border-radius: 100px; font-size: 15px;
+      font-weight: 700; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .contact-email:hover { background: rgba(255,255,255,0.25); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 24px;
+      color: var(--text-muted); font-size: 12px;
+    }
+    footer a { color: var(--brand); text-decoration: none; font-weight: 600; }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 100px; margin: 2px;
+    }
+    .badge-brand { background: var(--brand-light); color: var(--brand); }
+    .badge-danger { background: var(--danger-bg); color: var(--danger); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .card { padding: 24px 18px; }
+      .hero { padding: 52px 20px 72px; }
+      .two-col { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr 1fr; }
+      .contact-card { padding: 30px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        
-        <div class="doc-content">
-            <div class="doc-header">
-                <h1>Terms & Conditions</h1>
-                <p>Last Updated: May 29, 2026</p>
-            </div>
 
-            <p>Welcome to GigsNetwork. By accessing or using our mobile application, you agree to be bound by these Terms and Conditions. Please read them carefully.</p>
-
-            <h2>1. Platform Overview</h2>
-            <p>GigsNetwork acts as a bridge connecting independent gig workers ("Workers") with individuals or businesses looking to hire them ("Recruiters"). We provide the technology platform to facilitate these connections, job postings, and communications.</p>
-            
-            <div class="highlight-box">
-                <p><strong>Important Disclaimer:</strong> GigsNetwork is not an employer, employment agency, or contracting agency. We are strictly a platform connecting two independent parties. We are not responsible for the payment, working conditions, or the quality of work provided.</p>
-            </div>
-
-            <h2>2. User Roles and Responsibilities</h2>
-            
-            <h3>2.1 For Workers</h3>
-            <ul>
-                <li>You agree to provide accurate information regarding your identity, skills, and location.</li>
-                <li>When you enroll in a job, you commit to fulfilling the agreed-upon duties. Repeated "no-shows" or poor ratings may result in account suspension.</li>
-                <li>You are responsible for your own taxes and compliance with local labor laws.</li>
-            </ul>
-
-            <h3>2.2 For Recruiters</h3>
-            <ul>
-                <li>You agree to post accurate job descriptions, including location, date, time, and payment terms (Per Day, Per Hour, or Per Event).</li>
-                <li>You agree to compensate workers exactly as stated in your job posting upon completion of the work.</li>
-                <li>You may not post jobs that are illegal, hazardous, or violate any community guidelines.</li>
-            </ul>
-
-            <h2>3. Job Enrollment and Group Chats</h2>
-            <p>When a Worker enrolls in a job, they may be added to a Group Chat specific to that job. Group Chats are strictly for coordinating the details of the specific gig.</p>
-            <ul>
-                <li>Users must maintain professional conduct in group chats.</li>
-                <li>Harassment, spam, or sharing inappropriate content will lead to immediate account termination.</li>
-                <li>GigsNetwork reserves the right to monitor group chats to enforce these guidelines.</li>
-            </ul>
-
-            <h2>4. Ratings and Reviews</h2>
-            <p>To maintain platform quality, both Workers and Recruiters can rate each other after a job is completed. Ratings should be honest, objective, and based on the actual experience. GigsNetwork does not alter or modify ratings but may remove reviews that contain profanity or violate our policies.</p>
-
-            <h2>5. Account Termination</h2>
-            <p>You may delete your account at any time through the app. Please note that account deletion is permanent. We reserve the right to suspend or terminate your account if you violate these Terms and Conditions.</p>
-
-            <h2>6. Limitation of Liability</h2>
-            <p>GigsNetwork shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your access to or use of, or inability to access or use, the platform. This includes any disputes arising between Workers and Recruiters.</p>
-
-            <h2>7. Contact Information</h2>
-            <p>If you have any questions about these Terms, please contact us at support@gigsnetwork.com.</p>
-        </div>
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-chip">&#9679; GigsNetwork Legal</div>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="hero-sub">Please read carefully before using GigsNetwork. By creating an account, you agree to these Terms.</p>
+    <div class="hero-meta">
+      <span class="hero-tag">Effective: May 31, 2026</span>
+      <span class="hero-tag">Last Updated: May 31, 2026</span>
+      <span class="hero-tag">Version 1.0</span>
     </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════ DOC NAV ═══════════════════════════════ -->
+<nav class="doc-nav">
+  <a href="terms.html" class="active">&#9670; Terms &amp; Conditions</a>
+  <a href="privacy.html" class="inactive">&#9670; Privacy Policy</a>
+</nav>
+
+<!-- ═══════════════════════════════ CONTENT ═══════════════════════════════ -->
+<main class="wrap">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <p class="toc-label">Table of Contents</p>
+    <div class="toc-grid">
+      <a class="toc-link" href="#s1"><span class="toc-n">1</span> Introduction</a>
+      <a class="toc-link" href="#s2"><span class="toc-n">2</span> Platform Disclaimer</a>
+      <a class="toc-link" href="#s3"><span class="toc-n">3</span> Eligibility</a>
+      <a class="toc-link" href="#s4"><span class="toc-n">4</span> Account Registration</a>
+      <a class="toc-link" href="#s5"><span class="toc-n">5</span> Worker Responsibilities</a>
+      <a class="toc-link" href="#s6"><span class="toc-n">6</span> Recruiter Responsibilities</a>
+      <a class="toc-link" href="#s7"><span class="toc-n">7</span> Payment &amp; Non-Payment Policy</a>
+      <a class="toc-link" href="#s8"><span class="toc-n">8</span> Workplace Safety &amp; Abuse</a>
+      <a class="toc-link" href="#s9"><span class="toc-n">9</span> Prohibited Activities</a>
+      <a class="toc-link" href="#s10"><span class="toc-n">10</span> Job Enrollment</a>
+      <a class="toc-link" href="#s11"><span class="toc-n">11</span> Group Chats</a>
+      <a class="toc-link" href="#s12"><span class="toc-n">12</span> Attendance System</a>
+      <a class="toc-link" href="#s13"><span class="toc-n">13</span> Ratings &amp; Reviews</a>
+      <a class="toc-link" href="#s14"><span class="toc-n">14</span> Reporting &amp; Moderation</a>
+      <a class="toc-link" href="#s15"><span class="toc-n">15</span> Warranties &amp; Liability</a>
+      <a class="toc-link" href="#s16"><span class="toc-n">16</span> Indemnification</a>
+      <a class="toc-link" href="#s17"><span class="toc-n">17</span> Account Termination</a>
+      <a class="toc-link" href="#s18"><span class="toc-n">18</span> Account Deletion</a>
+      <a class="toc-link" href="#s19"><span class="toc-n">19</span> Governing Law</a>
+      <a class="toc-link" href="#s20"><span class="toc-n">20</span> Contact Us</a>
+    </div>
+  </div>
+
+  <!-- 1. INTRODUCTION -->
+  <section class="card" id="s1">
+    <p class="card-eyebrow">Section 01</p>
+    <h2>Introduction &amp; Acceptance of Terms</h2>
+    <p>Welcome to <strong>GigsNetwork</strong>. These Terms and Conditions ("Terms") govern your access to and use of the GigsNetwork mobile application ("App" or "Platform"), operated by GigsNetwork ("we," "us," or "our").</p>
+    <p>By downloading, installing, accessing, or using the App in any way — including creating an account — you confirm that you have read, understood, and agree to be legally bound by these Terms. If you do not agree to any part of these Terms, you must not use the App.</p>
+    <div class="alert alert-info">
+      <span class="alert-icon">&#9432;</span>
+      <div class="alert-content">
+        <p class="alert-title">Binding Agreement</p>
+        <p class="alert-text">These Terms constitute a legally binding agreement between you and GigsNetwork. Your continued use of the App after any updates to these Terms constitutes acceptance of those changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PLATFORM OVERVIEW & DISCLAIMER -->
+  <section class="card" id="s2">
+    <p class="card-eyebrow">Section 02</p>
+    <h2>Platform Overview &amp; Important Disclaimer</h2>
+    <p>GigsNetwork is a technology platform that connects independent gig workers ("Workers") with individuals and businesses seeking temporary, event-based, or short-term help ("Recruiters"). We provide the infrastructure for job listings, enrollment, communication, attendance tracking, and ratings.</p>
+    <div class="alert alert-warning">
+      <span class="alert-icon">&#9888;</span>
+      <div class="alert-content">
+        <p class="alert-title">Not an Employer or Agency</p>
+        <p class="alert-text">GigsNetwork is not an employer, staffing agency, employment agency, contractor, or party to any agreement between Workers and Recruiters. We do not direct the work of any Worker, set wages, or guarantee employment. Workers are independent individuals, not employees of GigsNetwork.</p>
+      </div>
+    </div>
+    <p>GigsNetwork bears no responsibility for:</p>
+    <ul>
+      <li>The quality or completion of work performed by any Worker</li>
+      <li>Payment or non-payment between Workers and Recruiters</li>
+      <li>The accuracy or legality of any job posting</li>
+      <li>Working conditions, safety, or incidents at any worksite</li>
+      <li>Any disputes arising between users of the platform</li>
+    </ul>
+  </section>
+
+  <!-- 3. ELIGIBILITY -->
+  <section class="card" id="s3">
+    <p class="card-eyebrow">Section 03</p>
+    <h2>Eligibility</h2>
+    <p>To use GigsNetwork, you must:</p>
+    <ul>
+      <li>Be at least <strong>18 years of age</strong></li>
+      <li>Be a legal resident of the country in which you use the App</li>
+      <li>Have the legal capacity to enter into a binding agreement</li>
+      <li>Not have been previously banned or suspended by GigsNetwork</li>
+      <li>Not be prohibited from using the App by any applicable law</li>
+    </ul>
+    <p>By using the App, you represent and warrant that you meet all eligibility requirements. GigsNetwork reserves the right to verify your identity and remove accounts that do not meet these requirements.</p>
+  </section>
+
+  <!-- 4. ACCOUNT REGISTRATION -->
+  <section class="card" id="s4">
+    <p class="card-eyebrow">Section 04</p>
+    <h2>Account Registration &amp; Profile Information</h2>
+
+    <h3>4.1 Phone Number Authentication — Sole Registration Method</h3>
+    <p>The <strong>only supported method of creating a GigsNetwork account</strong> is through your mobile phone number, verified via One-Time Password (OTP). No email-based login, social login (Google, Facebook, etc.), or alternative authentication method is available. You must have a valid, active phone number to register and continue using the App.</p>
+
+    <h3>4.2 Full Name — Mandatory</h3>
+    <p>You are required to provide your <strong>full legal name</strong> during registration. Your name is visible on your profile to other users (Recruiters viewing enrolled Workers, and Workers viewing job postings). This is mandatory for accountability, trust, and the basic functioning of the platform. Providing a false or misleading name is a violation of these Terms.</p>
+
+    <h3>4.3 Gender — Required for Job Matching</h3>
+    <p>You are required to provide your <strong>gender</strong> during registration. This information is used exclusively for <strong>job eligibility filtering</strong>. Certain job postings may specify a gender requirement (e.g., "Female only" for certain event staffing roles). Your gender ensures that you only see and can enroll in jobs you are legally and contractually eligible for. The platform enforces this automatically. Your gender is visible to Recruiters for jobs you enroll in.</p>
+
+    <h3>4.4 Profile Picture — Optional</h3>
+    <p>You may optionally upload a profile photo. If uploaded, it will be displayed on your profile and in group chats.</p>
+
+    <h3>4.5 Location — State &amp; City</h3>
+    <p>You select your State and City manually to enable location-based job matching. We do not track or collect your GPS coordinates.</p>
+
+    <h3>4.6 Account Security</h3>
+    <p>You are responsible for maintaining the security of your phone number and OTP codes. Do not share OTPs with anyone. GigsNetwork will never ask for your OTP outside the official app login flow.</p>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">&#9888;</span>
+      <div class="alert-content">
+        <p class="alert-title">One Account Per Person</p>
+        <p class="alert-text">Each person is permitted to have only one GigsNetwork account. Creating duplicate accounts to circumvent restrictions, bans, or rating penalties is strictly prohibited and will result in all associated accounts being permanently banned.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. WORKER RESPONSIBILITIES -->
+  <section class="card" id="s5">
+    <p class="card-eyebrow">Section 05</p>
+    <h2>Worker Responsibilities</h2>
+    <p>As a Worker on GigsNetwork, you agree to the following:</p>
+    <ul>
+      <li>Provide accurate, complete, and up-to-date profile information including your real name, gender, and location</li>
+      <li><strong>Honor your commitments</strong> — enrolling in a job is a binding commitment to attend and complete the work as described</li>
+      <li>Arrive punctually and professionally at the job location as scheduled</li>
+      <li>Perform the duties described in the job posting to a reasonable standard of competence and professionalism</li>
+      <li>Maintain respectful and professional conduct toward Recruiters, fellow Workers, and any third parties at the worksite</li>
+      <li>Comply with all applicable local and national labor laws; you are solely responsible for your taxes, social security, and compliance obligations</li>
+      <li>Report any abuse, illegal activity, unsafe working conditions, or non-payment through the in-app reporting system promptly</li>
+      <li>Not enroll in jobs you do not intend to fulfill</li>
+      <li>Not enroll in overlapping jobs simultaneously unless you can fulfil both</li>
+    </ul>
+    <div class="alert alert-warning">
+      <span class="alert-icon">&#9888;</span>
+      <div class="alert-content">
+        <p class="alert-title">No-Show Policy</p>
+        <p class="alert-text">Repeated failure to appear for enrolled jobs ("no-shows") will result in account warnings, rating penalties, and potential suspension or permanent ban. We take commitment to Recruiters very seriously.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. RECRUITER RESPONSIBILITIES -->
+  <section class="card" id="s6">
+    <p class="card-eyebrow">Section 06</p>
+    <h2>Recruiter Responsibilities</h2>
+    <p>As a Recruiter on GigsNetwork, you agree to the following:</p>
+    <ul>
+      <li>Post <strong>accurate, complete, and honest</strong> job listings including title, description, duties, location, start and end dates, times, and precise payment terms (amount, type, and schedule)</li>
+      <li><strong>Honour your payment obligations</strong> — you must pay Workers the exact amount and in the manner stated in your job posting, upon completion of work or as otherwise agreed in writing</li>
+      <li>Provide a safe, legal, and professional working environment for all Workers</li>
+      <li>Not post jobs that involve illegal activities, hazardous conditions without proper disclosure, or that violate any law or regulation</li>
+      <li>Treat Workers with dignity, respect, and professional courtesy</li>
+      <li>Not exploit Workers, withhold agreed payments, or use deceptive practices</li>
+      <li>Ensure that any gender requirements specified in your job posting are legally justified (e.g., for bona fide occupational requirements)</li>
+      <li>Notify Workers promptly of any changes to job details through the group chat</li>
+      <li>Not use the platform to solicit Workers into other off-platform arrangements designed to bypass GigsNetwork's policies</li>
+    </ul>
+  </section>
+
+  <!-- 7. PAYMENT TERMS -->
+  <section class="card" id="s7">
+    <p class="card-eyebrow">Section 07</p>
+    <h2>Payment Terms &amp; Non-Payment Policy</h2>
+
+    <h3>7.1 Recruiter Payment Obligation</h3>
+    <p>Recruiters bear <strong>full, sole, and legal responsibility</strong> for paying Workers exactly as stated in their job posting. GigsNetwork does not process payments, hold funds in escrow, or act as a payment intermediary between parties. The payment agreement is strictly between the Recruiter and the Worker.</p>
+
+    <h3>7.2 Non-Payment by a Recruiter</h3>
+    <div class="alert alert-danger">
+      <span class="alert-icon">&#128683;</span>
+      <div class="alert-content">
+        <p class="alert-title">Non-Payment is a Serious Violation</p>
+        <p class="alert-text">Failure or refusal to pay Workers as agreed in the job posting is a serious breach of these Terms. Recruiters who do not pay will face investigation, suspension, and permanent account banning. Repeat offenders may be reported to relevant authorities.</p>
+      </div>
+    </div>
+    <p>If a Recruiter has not paid you as agreed, follow these steps:</p>
+    <ol>
+      <li>First, attempt to resolve the matter directly with the Recruiter via the job's group chat and keep a record of all communications</li>
+      <li>If unresolved, use the in-app <strong>"Report"</strong> feature on the job listing and select "Non-Payment / Payment Dispute"</li>
+      <li>GigsNetwork admins will investigate the report and may take action including: issuing a formal warning, suspending the Recruiter's account, and/or permanently banning them</li>
+      <li>For significant unpaid amounts, you may need to seek legal recourse through the appropriate civil channels; GigsNetwork can provide account and chat records upon valid legal request</li>
+    </ol>
+
+    <h3>7.3 GigsNetwork's Role in Disputes</h3>
+    <p>GigsNetwork is not a party to any payment agreement and <strong>cannot compel payment or provide financial compensation from its own funds</strong>. We can assist by providing records, investigating reports, and banning non-paying Recruiters, but we do not guarantee payment outcomes.</p>
+
+    <h3>7.4 Fraudulent Job Postings</h3>
+    <p>Job postings created with the intent to lure Workers without genuine intent to hire or pay constitute fraud. Such accounts will be <strong>immediately and permanently banned</strong> and may be reported to law enforcement authorities.</p>
+
+    <h3>7.5 Worker Verification</h3>
+    <p>Workers are strongly advised to confirm payment terms in writing via the job's group chat before commencing work. Chat records are preserved within the platform and can serve as evidence in a dispute.</p>
+  </section>
+
+  <!-- 8. WORKPLACE SAFETY & ABUSE -->
+  <section class="card" id="s8">
+    <p class="card-eyebrow">Section 08</p>
+    <h2>Workplace Safety &amp; Abuse Policy</h2>
+
+    <h3>8.1 Zero Tolerance for Abuse</h3>
+    <p>GigsNetwork maintains a <strong>strict zero-tolerance policy</strong> for all forms of abuse, harassment, and violence — whether at the worksite, within the app's chat features, or in any other form of communication arising from a GigsNetwork engagement.</p>
+
+    <div class="two-col">
+      <div class="col-box">
+        <h4>Prohibited Behaviours</h4>
+        <ul>
+          <li>Physical violence or threats</li>
+          <li>Verbal abuse or intimidation</li>
+          <li>Sexual harassment of any form</li>
+          <li>Psychological abuse or coercion</li>
+          <li>Discriminatory conduct (race, gender, religion, etc.)</li>
+          <li>Stalking or following of users</li>
+        </ul>
+      </div>
+      <div class="col-box">
+        <h4>Consequences</h4>
+        <ul>
+          <li>Immediate account suspension</li>
+          <li>Permanent account ban</li>
+          <li>Report to law enforcement</li>
+          <li>Legal action where applicable</li>
+          <li>Cooperation with investigations</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>8.2 Physical Abuse at Worksite</h3>
+    <p>Any act of physical violence, assault, or credible physical threat at a job location — whether by a Recruiter toward a Worker or vice versa — constitutes an immediate violation of these Terms. The offending user's account will be permanently banned. <strong>In all cases involving physical safety, please contact your local emergency services (e.g., 100 / 112) immediately.</strong></p>
+
+    <h3>8.3 Sexual Harassment</h3>
+    <p>Sexual harassment — including unwanted advances, inappropriate messages, or physical conduct of a sexual nature — is a criminal offence under applicable law and a severe violation of these Terms. Victims are strongly encouraged to both report through the app and file a complaint with local law enforcement.</p>
+
+    <h3>8.4 Reporting Abuse</h3>
+    <p>To report abuse, use the in-app "Report" function on the relevant job, chat message, or user profile. Reports are reviewed by GigsNetwork moderators. For immediate physical danger, <strong>always contact emergency services first</strong> before filing an in-app report.</p>
+
+    <h3>8.5 Worksite Safety Disclaimer</h3>
+    <p>GigsNetwork is not physically present at any worksite and cannot monitor or guarantee the safety conditions of any job location. Users attend and work entirely at their own risk. Recruiters are solely responsible for ensuring their worksite complies with all applicable health and safety laws.</p>
+  </section>
+
+  <!-- 9. PROHIBITED ACTIVITIES -->
+  <section class="card" id="s9">
+    <p class="card-eyebrow">Section 09</p>
+    <h2>Prohibited Activities</h2>
+    <p>The following are strictly prohibited on GigsNetwork and will result in immediate account termination and possible legal action:</p>
+
+    <h3>9.1 Illegal Activity</h3>
+    <ul>
+      <li>Posting or applying for jobs that require performing illegal activities of any kind</li>
+      <li>Using the platform for money laundering, financial fraud, or any financial crime</li>
+      <li>Recruiting Workers for illegal enterprises disguised as legitimate gigs</li>
+      <li>Any activity that violates applicable local, state, national, or international law</li>
+    </ul>
+
+    <h3>9.2 Platform Abuse</h3>
+    <ul>
+      <li>Creating fake or duplicate accounts for any purpose</li>
+      <li>Impersonating another person, business, or entity</li>
+      <li>Circumventing a ban by registering a new account</li>
+      <li>Attempting to hack, exploit, reverse-engineer, or disrupt the platform</li>
+      <li>Introducing malware, viruses, or malicious code</li>
+      <li>Scraping, crawling, or data-mining the platform without authorization</li>
+    </ul>
+
+    <h3>9.3 Harmful Content &amp; Conduct</h3>
+    <ul>
+      <li>Sharing discriminatory, hateful, obscene, or threatening content through any feature of the App</li>
+      <li>Sharing another user's personal information without their consent ("doxxing")</li>
+      <li>Using chat features to solicit Workers outside the platform to circumvent platform rules</li>
+      <li>Posting fake job listings intended to mislead or defraud Workers</li>
+      <li>Manipulating the rating system (e.g., fake reviews, coercion, bribery)</li>
+    </ul>
+  </section>
+
+  <!-- 10. JOB ENROLLMENT -->
+  <section class="card" id="s10">
+    <p class="card-eyebrow">Section 10</p>
+    <h2>Job Enrollment Policy</h2>
+
+    <h3>10.1 Enrollment is a One-Way Commitment</h3>
+    <p>When a Worker taps "Enroll" on a job listing, this constitutes a <strong>binding commitment</strong> to attend and perform the work. <strong>Workers cannot withdraw from an enrollment once made.</strong> Please review all job details carefully before enrolling.</p>
+
+    <h3>10.2 Eligibility Enforcement</h3>
+    <p>The platform automatically enforces job eligibility requirements, including gender requirements specified by Recruiters. Workers who do not meet a job's requirements will see the job listing as ineligible and cannot enroll.</p>
+
+    <h3>10.3 Consequences for No-Shows</h3>
+    <p>Repeatedly enrolling in jobs and failing to appear without reasonable cause will result in: automatic rating penalties, an account warning, and with repeat violations, suspension or permanent banning of the Worker's account.</p>
+
+    <h3>10.4 Cancellation by Recruiters</h3>
+    <p>Recruiters may close a job or stop new enrollments at any time. If a Recruiter cancels or closes a job after Workers have enrolled, they are expected to notify enrolled Workers promptly through the group chat and to compensate Workers for any reasonable out-of-pocket expenses incurred, where applicable.</p>
+  </section>
+
+  <!-- 11. GROUP CHAT POLICY -->
+  <section class="card" id="s11">
+    <p class="card-eyebrow">Section 11</p>
+    <h2>Group Chat Policy</h2>
+    <p>Each job on GigsNetwork has exactly one associated group chat, which is created automatically when a job is posted. Workers are automatically added to the group chat upon enrolling.</p>
+    <h3>11.1 Purpose</h3>
+    <p>Group chats are strictly for coordinating the specific gig — sharing directions, schedules, instructions, and other job-related communications.</p>
+    <h3>11.2 User Obligations in Chat</h3>
+    <ul>
+      <li>Communicate professionally and respectfully at all times</li>
+      <li>Use the chat solely for job-related coordination</li>
+      <li>Not share inappropriate, offensive, discriminatory, or illegal content</li>
+      <li>Not use the chat for advertising, spam, off-platform solicitation, or unrelated business</li>
+      <li>Not share other users' personal contact information without their consent</li>
+    </ul>
+    <h3>11.3 Monitoring &amp; Moderation</h3>
+    <p>GigsNetwork reserves the right to monitor group chat content to enforce these guidelines. Violations may result in removal from the chat, account warning, suspension, or permanent ban. Platform admins have the authority to read chat histories, ban individual users from a chat, force-close a chat, or delete individual messages.</p>
+  </section>
+
+  <!-- 12. ATTENDANCE -->
+  <section class="card" id="s12">
+    <p class="card-eyebrow">Section 12</p>
+    <h2>Attendance System</h2>
+    <p>For multi-day or multi-session jobs, GigsNetwork provides an attendance tracking system. Recruiters may mark Workers as Present or Absent for each session. Attendance data is used to:</p>
+    <ul>
+      <li>Generate reports for the Recruiter's internal record-keeping</li>
+      <li>Facilitate payment calculations for hourly or per-session pay structures</li>
+      <li>Provide accountability and transparency for both parties</li>
+    </ul>
+    <p>Workers should note that their attendance record is visible to the Recruiter and may be referenced in case of a payment dispute. GigsNetwork does not alter attendance records; any disputes about a record must be raised with the Recruiter directly via the group chat.</p>
+  </section>
+
+  <!-- 13. RATINGS -->
+  <section class="card" id="s13">
+    <p class="card-eyebrow">Section 13</p>
+    <h2>Ratings &amp; Reviews</h2>
+    <p>After a job expires, Workers are invited to rate the Recruiter on a scale of 1 to 5 stars. Ratings are displayed on Recruiter profiles and influence trust on the platform.</p>
+    <ul>
+      <li>Ratings must be <strong>honest, fair, and based on your actual experience</strong></li>
+      <li>Rating manipulation — including fake reviews, offering incentives for 5-star ratings, coercing users to change reviews, or using fake accounts to boost a rating — is strictly prohibited</li>
+      <li>GigsNetwork will not alter genuine ratings but may remove reviews that contain profanity, discriminatory language, false statements of fact, or content that violates these Terms</li>
+      <li>Retaliatory reviews filed in bad faith are a violation of these Terms and may result in the review being removed and the account being penalised</li>
+    </ul>
+  </section>
+
+  <!-- 14. REPORTING & MODERATION -->
+  <section class="card" id="s14">
+    <p class="card-eyebrow">Section 14</p>
+    <h2>Reporting &amp; Moderation</h2>
+    <p>GigsNetwork provides in-app reporting tools to flag: job listings, individual chat messages, group chats, and user profiles. All reports are reviewed by our moderation team.</p>
+    <h3>14.1 Reporting Actions Available</h3>
+    <ul>
+      <li>Report a job (fraud, illegal content, inaccurate listing, non-payment)</li>
+      <li>Report a chat message (abuse, harassment, inappropriate content)</li>
+      <li>Report a user (fraud, impersonation, abuse)</li>
+    </ul>
+    <h3>14.2 Possible Moderation Outcomes</h3>
+    <ul>
+      <li>Formal warning issued to the reported user</li>
+      <li>Temporary account suspension</li>
+      <li>Permanent account ban</li>
+      <li>Job listing unlisted, force-closed, or cancelled</li>
+      <li>Group chat force-closed or individual user removed from a chat</li>
+      <li>Referral to law enforcement for serious violations</li>
+    </ul>
+    <div class="alert alert-warning">
+      <span class="alert-icon">&#9888;</span>
+      <div class="alert-content">
+        <p class="alert-title">False Reports are a Violation</p>
+        <p class="alert-text">Filing malicious, false, or frivolous reports with the intent to harm another user or abuse the moderation system is itself a violation of these Terms and may result in action being taken against your account.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. WARRANTIES & LIABILITY -->
+  <section class="card" id="s15">
+    <p class="card-eyebrow">Section 15</p>
+    <h2>Disclaimer of Warranties &amp; Limitation of Liability</h2>
+
+    <h3>15.1 As-Is Disclaimer</h3>
+    <p>The App and all its features are provided <strong>"as is"</strong> and <strong>"as available,"</strong> without any warranties of any kind, whether express or implied. GigsNetwork makes no warranties or representations about the accuracy, completeness, reliability, or legality of any job listing, the suitability of any Worker or Recruiter, the uninterrupted availability of the platform, or the fitness of the platform for any particular purpose. We disclaim all warranties to the fullest extent permitted by applicable law.</p>
+
+    <h3>15.2 Limitation of Liability</h3>
+    <p>To the maximum extent permitted by law, GigsNetwork and its officers, directors, employees, and agents shall not be liable for:</p>
+    <ul>
+      <li>Indirect, incidental, special, consequential, or punitive damages of any kind</li>
+      <li>Loss of wages, earnings, revenue, or income</li>
+      <li>Any harm arising from the actions, conduct, or misconduct of any other user</li>
+      <li>Incidents, injuries, or losses occurring at a worksite</li>
+      <li>Payment disputes or financial losses between Workers and Recruiters</li>
+      <li>Unauthorized access to or use of user data due to circumstances beyond our reasonable control</li>
+    </ul>
+    <p>GigsNetwork is a free-to-use platform. Our total liability to you for any claim under these Terms shall not exceed ₹500 (five hundred Indian Rupees).</p>
+  </section>
+
+  <!-- 16. INDEMNIFICATION -->
+  <section class="card" id="s16">
+    <p class="card-eyebrow">Section 16</p>
+    <h2>Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold harmless GigsNetwork, its officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in any way connected with:</p>
+    <ul>
+      <li>Your violation of these Terms or any applicable law</li>
+      <li>Your use of or access to the App</li>
+      <li>Your interactions with any other user on or off the platform</li>
+      <li>Any content, job listing, or communication you post or send</li>
+      <li>Any claim that your content infringes the rights of a third party</li>
+    </ul>
+  </section>
+
+  <!-- 17. ACCOUNT TERMINATION / BAN -->
+  <section class="card" id="s17">
+    <p class="card-eyebrow">Section 17</p>
+    <h2>Account Suspension &amp; Termination</h2>
+    <p>GigsNetwork reserves the right to suspend or permanently terminate any account, at any time, with or without prior notice, for any of the following reasons (non-exhaustive):</p>
+    <ul>
+      <li>Violation of any provision of these Terms</li>
+      <li>Fraud, deception, or impersonation</li>
+      <li>Non-payment of Workers (Recruiters)</li>
+      <li>Physical, verbal, or sexual abuse</li>
+      <li>Posting or participating in illegal activities</li>
+      <li>Creating fake or duplicate accounts</li>
+      <li>Manipulation of the ratings system</li>
+      <li>Filing false or malicious reports</li>
+      <li>Repeated and unexplained no-shows (Workers)</li>
+    </ul>
+    <div class="alert alert-danger">
+      <span class="alert-icon">&#128683;</span>
+      <div class="alert-content">
+        <p class="alert-title">Circumventing a Ban is Prohibited</p>
+        <p class="alert-text">Permanently banned users are prohibited from creating new accounts under any phone number. Attempting to bypass a ban will result in all associated accounts being flagged, and may result in additional legal action.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18. ACCOUNT DELETION -->
+  <section class="card" id="s18">
+    <p class="card-eyebrow">Section 18</p>
+    <h2>Your Right to Delete Your Account</h2>
+    <div class="alert alert-success">
+      <span class="alert-icon">&#10003;</span>
+      <div class="alert-content">
+        <p class="alert-title">You Control Your Data</p>
+        <p class="alert-text">You have the right to permanently delete your GigsNetwork account at any time, free of charge, directly from within the App. No contact with support is required.</p>
+      </div>
+    </div>
+
+    <h3>18.1 How to Delete Your Account</h3>
+    <ol>
+      <li>Open the GigsNetwork App</li>
+      <li>Navigate to <strong>Profile</strong> tab</li>
+      <li>Tap <strong>Settings</strong></li>
+      <li>Tap <strong>"Delete Account"</strong></li>
+      <li>Complete the identity verification step (your device may prompt for your screen lock PIN or biometric — this is handled entirely by your device's operating system and is never transmitted to GigsNetwork)</li>
+      <li>Confirm the deletion when prompted</li>
+    </ol>
+
+    <h3>18.2 What Is Permanently Deleted</h3>
+    <ul>
+      <li>Your phone number and all personal identifiers</li>
+      <li>Your name and profile picture (removed from Firebase Storage)</li>
+      <li>Your gender and location information</li>
+      <li>Your Firebase Authentication record (you cannot log in again with the same phone number unless you re-register)</li>
+      <li>Your device's push notification (FCM) token</li>
+    </ul>
+
+    <h3>18.3 What May Remain (Anonymised)</h3>
+    <ul>
+      <li>Past enrollment records are anonymised (linked to a job ID, not your identity) to maintain historical integrity for Recruiters' records</li>
+      <li>Past chat messages may remain as orphaned records within job chat history — they will not be linked to your profile or name</li>
+      <li>Attendance records are anonymised for reporting integrity</li>
+    </ul>
+
+    <h3>18.4 Important Notes</h3>
+    <div class="alert alert-warning">
+      <span class="alert-icon">&#9888;</span>
+      <div class="alert-content">
+        <p class="alert-title">Deletion is Irreversible</p>
+        <p class="alert-text">Account deletion is permanent. You cannot undo it. Any active job enrollments at the time of deletion will be automatically cancelled. Recruiters with active job listings should close them before deleting. Deletion does not cancel any payment obligations owed to Workers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19. CHANGES & GOVERNING LAW -->
+  <section class="card" id="s19">
+    <p class="card-eyebrow">Section 19</p>
+    <h2>Changes to Terms &amp; Governing Law</h2>
+
+    <h3>19.1 Changes to These Terms</h3>
+    <p>GigsNetwork reserves the right to update or modify these Terms at any time. When we do, we will update the "Last Updated" date at the top of this document and notify you through the App. Your continued use of the App after any changes constitutes your acceptance of the revised Terms. If you do not agree with the updated Terms, you must stop using the App and may delete your account.</p>
+
+    <h3>19.2 Governing Law &amp; Jurisdiction</h3>
+    <p>These Terms are governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising out of or in connection with these Terms or your use of the App shall be subject to the exclusive jurisdiction of the courts of <strong>Chennai, Tamil Nadu, India</strong>.</p>
+
+    <h3>19.3 Severability</h3>
+    <p>If any provision of these Terms is found to be unenforceable or invalid by a court of competent jurisdiction, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-card" id="s20">
+    <h2>Questions About These Terms?</h2>
+    <p>Our team is here to help. Reach out to us at any time for clarification, concerns, or to report a violation.</p>
+    <a href="mailto:support@gigsnetwork.com" class="contact-email">support@gigsnetwork.com</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 GigsNetwork. All rights reserved. &nbsp;|&nbsp;
+  <a href="terms.html">Terms &amp; Conditions</a> &nbsp;|&nbsp;
+  <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
 </body>
 </html>
