@@ -1,993 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — GigsNetwork</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg:            #0d1117;
-            --surface:       #161b24;
-            --surface-alt:   #1c2333;
-            --border:        #252d3d;
-            --accent:        #00c896;
-            --accent-soft:   rgba(0,200,150,.12);
-            --accent-border: rgba(0,200,150,.30);
-            --warn:          #f59e0b;
-            --warn-soft:     rgba(245,158,11,.10);
-            --warn-border:   rgba(245,158,11,.30);
-            --danger:        #ef4444;
-            --danger-soft:   rgba(239,68,68,.10);
-            --danger-border: rgba(239,68,68,.28);
-            --info:          #60a5fa;
-            --info-soft:     rgba(96,165,250,.10);
-            --info-border:   rgba(96,165,250,.28);
-            --text-primary:  #e6edf3;
-            --text-secondary:#8b949e;
-            --text-muted:    #484f58;
-            --radius-sm:     6px;
-            --radius-md:     10px;
-            --radius-lg:     16px;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background: var(--bg);
-            color: var(--text-primary);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            line-height: 1.75;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ── HEADER ── */
-        .page-header {
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 48px 24px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: -60px; left: 50%;
-            transform: translateX(-50%);
-            width: 520px; height: 260px;
-            background: radial-gradient(ellipse at center, rgba(0,200,150,.14) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-soft);
-            border: 1px solid var(--accent-border);
-            border-radius: 40px;
-            padding: 5px 14px 5px 10px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .brand-badge .dot {
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--accent);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%,100% { opacity: 1; transform: scale(1); }
-            50%      { opacity: .5; transform: scale(.8); }
-        }
-        .page-header h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(28px, 5vw, 44px);
-            font-weight: 400;
-            color: var(--text-primary);
-            letter-spacing: -.5px;
-            margin-bottom: 10px;
-        }
-        .page-header h1 em {
-            font-style: italic;
-            color: var(--accent);
-        }
-        .meta-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 18px;
-        }
-        .meta-chip {
-            background: var(--surface-alt);
-            border: 1px solid var(--border);
-            border-radius: 40px;
-            padding: 4px 14px;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        /* ── TOC ── */
-        .toc-wrapper {
-            max-width: 820px;
-            margin: 36px auto;
-            padding: 0 20px;
-        }
-        .toc-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 24px 28px;
-        }
-        .toc-box h2 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-        }
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 4px;
-        }
-        .toc-grid a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13.5px;
-            padding: 6px 8px;
-            border-radius: var(--radius-sm);
-            transition: color .15s, background .15s;
-        }
-        .toc-grid a:hover { color: var(--accent); background: var(--accent-soft); }
-        .toc-num {
-            min-width: 22px; height: 22px;
-            border-radius: 5px;
-            background: var(--surface-alt);
-            border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        /* ── MAIN ── */
-        .main {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 0 20px 80px;
-        }
-
-        /* ── SECTIONS ── */
-        .section {
-            margin-bottom: 44px;
-            scroll-margin-top: 24px;
-        }
-        .section-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-        .section-num {
-            min-width: 34px; height: 34px;
-            border-radius: var(--radius-sm);
-            background: var(--accent-soft);
-            border: 1px solid var(--accent-border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-top: 3px;
-        }
-        .section-header h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(18px, 3vw, 23px);
-            font-weight: 400;
-            color: var(--text-primary);
-            line-height: 1.25;
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 14px;
-        }
-        p:last-child { margin-bottom: 0; }
-
-        strong { color: var(--text-primary); font-weight: 600; }
-
-        /* ── DATA CARD GRID ── */
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .data-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 16px 18px;
-            transition: border-color .2s;
-        }
-        .data-card:hover { border-color: var(--accent-border); }
-        .data-card-label {
-            font-size: 10.5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .8px;
-            color: var(--accent);
-            margin-bottom: 6px;
-        }
-        .data-card-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-        }
-        .data-card p {
-            font-size: 13px;
-            line-height: 1.55;
-            margin-bottom: 0;
-        }
-        .data-card.required::after {
-            content: 'Required';
-            display: inline-block;
-            margin-top: 10px;
-            background: var(--danger-soft);
-            border: 1px solid var(--danger-border);
-            border-radius: 40px;
-            padding: 2px 9px;
-            font-size: 10.5px;
-            font-weight: 600;
-            color: var(--danger);
-        }
-        .data-card.optional::after {
-            content: 'Optional';
-            display: inline-block;
-            margin-top: 10px;
-            background: var(--info-soft);
-            border: 1px solid var(--info-border);
-            border-radius: 40px;
-            padding: 2px 9px;
-            font-size: 10.5px;
-            font-weight: 600;
-            color: var(--info);
-        }
-
-        /* ── PERMISSION ROW ── */
-        .perm-list { margin: 16px 0; display: flex; flex-direction: column; gap: 10px; }
-        .perm-row {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 14px 18px;
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-        }
-        .perm-icon {
-            width: 36px; height: 36px; min-width: 36px;
-            border-radius: 9px;
-            background: var(--accent-soft);
-            border: 1px solid var(--accent-border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 17px;
-        }
-        .perm-body {}
-        .perm-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        .perm-purpose {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 3px;
-        }
-        .perm-note {
-            display: inline-block;
-            margin-top: 6px;
-            background: var(--info-soft);
-            border: 1px solid var(--info-border);
-            border-radius: 4px;
-            padding: 3px 8px;
-            font-size: 11.5px;
-            color: var(--info);
-        }
-
-        /* ── CALLOUT BOXES ── */
-        .callout {
-            border-radius: var(--radius-md);
-            padding: 16px 20px;
-            margin: 18px 0;
-            border-left: 3px solid;
-        }
-        .callout-title {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .6px;
-            margin-bottom: 7px;
-        }
-        .callout p { font-size: 13.5px; margin-bottom: 8px; }
-        .callout p:last-child { margin-bottom: 0; }
-        .callout.info  { background: var(--info-soft);   border-color: var(--info);   }
-        .callout.info  .callout-title { color: var(--info);   }
-        .callout.warn  { background: var(--warn-soft);   border-color: var(--warn);   }
-        .callout.warn  .callout-title { color: var(--warn);   }
-        .callout.danger{ background: var(--danger-soft); border-color: var(--danger); }
-        .callout.danger .callout-title { color: var(--danger); }
-        .callout.accent{ background: var(--accent-soft); border-color: var(--accent); }
-        .callout.accent .callout-title { color: var(--accent); }
-
-        /* ── USAGE TABLE ── */
-        .use-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
-        .use-table th {
-            background: var(--surface-alt);
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: .7px;
-            padding: 10px 14px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        .use-table th:first-child { border-radius: 8px 0 0 0; }
-        .use-table th:last-child  { border-radius: 0 8px 0 0; }
-        .use-table td {
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-            vertical-align: top;
-        }
-        .use-table td:first-child { color: var(--text-primary); font-weight: 500; }
-        .use-table tr:last-child td { border-bottom: none; }
-        .use-table tr:hover td { background: var(--surface-alt); }
-        .pill {
-            display: inline-block;
-            border-radius: 40px;
-            padding: 2px 9px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .pill-green { background: var(--accent-soft);  border: 1px solid var(--accent-border); color: var(--accent); }
-        .pill-blue  { background: var(--info-soft);    border: 1px solid var(--info-border);   color: var(--info);   }
-        .pill-red   { background: var(--danger-soft);  border: 1px solid var(--danger-border); color: var(--danger); }
-
-        /* ── DIVIDER ── */
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border), transparent);
-            margin: 40px 0;
-        }
-
-        /* ── STEP LIST ── */
-        .step-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
-        .step-item {
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 14px 18px;
-        }
-        .step-badge {
-            min-width: 26px; height: 26px;
-            border-radius: 50%;
-            background: var(--accent-soft);
-            border: 1px solid var(--accent-border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .step-text { font-size: 13.5px; color: var(--text-secondary); }
-        .step-text strong { color: var(--text-primary); }
-
-        /* ── BULLET LIST ── */
-        .custom-list { list-style: none; margin: 12px 0; display: flex; flex-direction: column; gap: 7px; }
-        .custom-list li {
-            padding-left: 20px;
-            position: relative;
-            font-size: 13.5px;
-            color: var(--text-secondary);
-        }
-        .custom-list li::before {
-            content: '';
-            position: absolute;
-            left: 4px; top: 9px;
-            width: 5px; height: 5px;
-            border-radius: 50%;
-            background: var(--accent);
-            opacity: .7;
-        }
-        .custom-list li strong { color: var(--text-primary); }
-
-        /* ── FOOTER ── */
-        .page-footer {
-            max-width: 820px;
-            margin: 0 auto 48px;
-            padding: 0 20px;
-        }
-        .footer-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 28px 32px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .footer-left {}
-        .footer-left h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 18px;
-            font-weight: 400;
-            margin-bottom: 6px;
-        }
-        .footer-left p { font-size: 13.5px; margin-bottom: 0; }
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .contact-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13.5px;
-            color: var(--text-secondary);
-        }
-        .contact-row a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .contact-row a:hover { text-decoration: underline; }
-
-        @media (max-width: 600px) {
-            .page-header { padding: 36px 16px 30px; }
-            .toc-wrapper, .main, .page-footer { padding-left: 14px; padding-right: 14px; }
-            .toc-grid { grid-template-columns: 1fr; }
-            .data-grid { grid-template-columns: 1fr; }
-            .use-table { font-size: 12px; }
-            .footer-card { padding: 22px 20px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — GigsNetwork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #F0F4F2;
+      --card:      #FFFFFF;
+      --border:    #DDE5E1;
+      --accent:    #0D7A5A;
+      --accent-lt: #E6F4EF;
+      --accent-bd: #A8D5C4;
+      --text:      #12211A;
+      --sub:       #4D6259;
+      --muted:     #8FA39A;
+      --warn:      #92580E;
+      --warn-lt:   #FEF9EE;
+      --warn-bd:   #F4CC7A;
+      --danger:    #B91C1C;
+      --danger-lt: #FEF2F2;
+      --danger-bd: #FECACA;
+      --info:      #1D4ED8;
+      --info-lt:   #EFF6FF;
+      --info-bd:   #BFDBFE;
+      --r:         12px;
+      --rs:        7px;
+      --shadow:    0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14.5px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(145deg, #0a2e1f 0%, #0D7A5A 60%, #12A37A 100%);
+      padding: 56px 24px 64px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 70% 60% at 10% 80%, rgba(255,255,255,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 90% 20%, rgba(255,255,255,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #B7E8D8; font-size: 11px; font-weight: 700;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px;
+      margin-bottom: 20px; backdrop-filter: blur(6px);
+    }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #5EEEC2; animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 600; color: #fff;
+      letter-spacing: -.5px; line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero h1 em { font-style: italic; font-weight: 300; color: #8FECD2; }
+    .hero-sub { color: rgba(183,232,216,.8); font-size: 14px; margin-bottom: 24px; }
+    .hero-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .hero-chip {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      color: #C8F0E2; font-size: 12px; font-weight: 500;
+      padding: 4px 14px; border-radius: 100px;
+    }
+    /* ── WAVE ── */
+    .wave { display: block; background: var(--hero-end, #12A37A); line-height: 0; }
+    /* ── NAV ── */
+    .doc-nav {
+      display: flex; justify-content: center; gap: 10px;
+      padding: 20px 20px 0; max-width: 860px; margin: 0 auto;
+    }
+    .doc-nav a {
+      padding: 9px 22px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; text-decoration: none; transition: all .2s;
+    }
+    .doc-nav a.active { background: var(--accent); color: #fff; box-shadow: 0 4px 14px rgba(13,122,90,.35); }
+    .doc-nav a.off { background: var(--card); color: var(--sub); border: 1px solid var(--border); }
+    .doc-nav a.off:hover { background: var(--accent-lt); color: var(--accent); }
+    /* ── WRAP ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 72px; }
+    /* ── TOC ── */
+    .toc {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); box-shadow: var(--shadow);
+      padding: 24px 28px; margin-bottom: 22px;
+    }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 2px; }
+    .toc-link {
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 10px; border-radius: var(--rs);
+      text-decoration: none; color: var(--sub);
+      font-size: 13px; font-weight: 500; transition: all .15s;
+    }
+    .toc-link:hover { background: var(--accent-lt); color: var(--accent); }
+    .toc-n {
+      min-width: 22px; height: 22px; border-radius: 50%;
+      background: var(--accent-lt); color: var(--accent);
+      font-size: 10px; font-weight: 700; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* ── CARD ── */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); box-shadow: var(--shadow);
+      padding: 32px 36px; margin-bottom: 18px;
+      scroll-margin-top: 20px;
+    }
+    .card-eye { font-size: 10px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+    .card h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 600; color: var(--text);
+      border-bottom: 2px solid var(--accent-lt);
+      padding-bottom: 14px; margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .card h3 { font-size: 14px; font-weight: 700; color: var(--text); margin: 20px 0 8px; }
+    .card p { color: var(--sub); margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); font-weight: 700; }
+    /* ── DATA TABLE ── */
+    .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+    .data-table thead tr { background: var(--accent-lt); }
+    .data-table th {
+      padding: 10px 14px; text-align: left;
+      font-size: 11px; font-weight: 700; letter-spacing: .8px;
+      text-transform: uppercase; color: var(--accent);
+      border-bottom: 2px solid var(--accent-bd);
+    }
+    .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--sub); vertical-align: top; }
+    .data-table td:first-child { font-weight: 600; color: var(--text); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: #FAFCFB; }
+    .pill {
+      display: inline-block; border-radius: 100px;
+      padding: 2px 9px; font-size: 11px; font-weight: 700;
+    }
+    .pill-req { background: var(--danger-lt); color: var(--danger); border: 1px solid var(--danger-bd); }
+    .pill-opt { background: var(--info-lt); color: var(--info); border: 1px solid var(--info-bd); }
+    /* ── PERM LIST ── */
+    .perm-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+    .perm-row {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--rs); padding: 14px 16px;
+    }
+    .perm-icon { font-size: 18px; width: 36px; height: 36px; min-width: 36px; display: flex; align-items: center; justify-content: center; background: var(--accent-lt); border-radius: 8px; border: 1px solid var(--accent-bd); }
+    .perm-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .perm-text { font-size: 13px; color: var(--sub); }
+    .perm-badge { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 4px; }
+    .req-badge { background: var(--danger-lt); color: var(--danger); border: 1px solid var(--danger-bd); }
+    .opt-badge { background: var(--info-lt); color: var(--info); border: 1px solid var(--info-bd); }
+    /* ── ALERTS ── */
+    .alert {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 14px 16px; border-radius: var(--rs);
+      margin: 16px 0; border-left: 3px solid;
+    }
+    .alert-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+    .alert-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 4px; }
+    .alert-body { font-size: 13.5px; line-height: 1.65; }
+    .alert.info { background: var(--info-lt); border-color: var(--info); }
+    .alert.info .alert-title { color: var(--info); }
+    .alert.info .alert-body { color: #1E3A8A; }
+    .alert.warn { background: var(--warn-lt); border-color: #F59E0B; }
+    .alert.warn .alert-title { color: var(--warn); }
+    .alert.warn .alert-body { color: #78350F; }
+    .alert.accent { background: var(--accent-lt); border-color: var(--accent); }
+    .alert.accent .alert-title { color: var(--accent); }
+    .alert.accent .alert-body { color: #064E3B; }
+    .alert.danger { background: var(--danger-lt); border-color: var(--danger); }
+    .alert.danger .alert-title { color: var(--danger); }
+    .alert.danger .alert-body { color: #7F1D1D; }
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+    .step-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--rs); padding: 13px 16px;
+    }
+    .step-n {
+      min-width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-size: 11px; font-weight: 800; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-text { font-size: 13.5px; color: var(--sub); }
+    .step-text strong { color: var(--text); }
+    /* ── BULLET LIST ── */
+    .blist { list-style: none; padding: 0; margin: 10px 0; display: flex; flex-direction: column; gap: 6px; }
+    .blist li {
+      padding: 7px 12px 7px 28px; position: relative;
+      font-size: 13.5px; color: var(--sub); border-radius: 6px;
+    }
+    .blist li::before {
+      content: ''; position: absolute; left: 11px; top: 14px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); opacity: .75;
+    }
+    .blist li:hover { background: var(--bg); }
+    .blist li strong { color: var(--text); }
+    /* ── FOOTER CARD ── */
+    .footer-card {
+      background: var(--text); border-radius: var(--r);
+      padding: 36px 32px; display: flex;
+      flex-wrap: wrap; gap: 24px; align-items: center;
+      justify-content: space-between; margin-bottom: 36px;
+    }
+    .footer-card h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .footer-card p { font-size: 13.5px; color: rgba(255,255,255,.6); margin: 0; }
+    .contact-links { display: flex; flex-direction: column; gap: 8px; }
+    .contact-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.65); }
+    .contact-row a { color: #8FECD2; text-decoration: none; font-weight: 600; }
+    .contact-row a:hover { text-decoration: underline; }
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: var(--border); margin: 0; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .card { padding: 22px 18px; }
+      .hero { padding: 44px 16px 52px; }
+      .toc-grid { grid-template-columns: 1fr 1fr; }
+      .doc-nav { gap: 8px; }
+      .doc-nav a { padding: 8px 14px; font-size: 12px; }
+      .footer-card { padding: 24px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="page-header">
-        <div class="brand-badge"><span class="dot"></span> GigsNetwork</div>
-        <h1>Privacy <em>Policy</em></h1>
-        <div class="meta-row">
-            <span class="meta-chip">Effective: May 31, 2026</span>
-            <span class="meta-chip">Version 1.0</span>
-            <span class="meta-chip">Applies to: Android App</span>
-        </div>
-    </header>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> GigsNetwork</div>
+    <h1>Privacy <em>Policy</em></h1>
+    <p class="hero-sub">What we collect, why we collect it, and how you stay in control.</p>
+    <div class="hero-chips">
+      <span class="hero-chip">Effective: June 1, 2026</span>
+      <span class="hero-chip">Version 1.1</span>
+      <span class="hero-chip">Platform: Android</span>
+      <span class="hero-chip">Jurisdiction: India</span>
+    </div>
+  </div>
+</header>
 
-    <!-- TABLE OF CONTENTS -->
-    <div class="toc-wrapper">
-        <div class="toc-box">
-            <h2>Contents</h2>
-            <div class="toc-grid">
-                <a href="#s1"><span class="toc-num">1</span> Introduction & Scope</a>
-                <a href="#s2"><span class="toc-num">2</span> Information We Collect</a>
-                <a href="#s3"><span class="toc-num">3</span> App Permissions</a>
-                <a href="#s4"><span class="toc-num">4</span> How We Use Your Data</a>
-                <a href="#s5"><span class="toc-num">5</span> Information Sharing</a>
-                <a href="#s6"><span class="toc-num">6</span> Platform Conduct & Disputes</a>
-                <a href="#s7"><span class="toc-num">7</span> User-Generated Content</a>
-                <a href="#s8"><span class="toc-num">8</span> Data Retention & Deletion</a>
-                <a href="#s9"><span class="toc-num">9</span> Your Rights</a>
-                <a href="#s10"><span class="toc-num">10</span> Third-Party Services</a>
-                <a href="#s11"><span class="toc-num">11</span> Children's Privacy</a>
-                <a href="#s12"><span class="toc-num">12</span> Security</a>
-                <a href="#s13"><span class="toc-num">13</span> Changes to This Policy</a>
-                <a href="#s14"><span class="toc-num">14</span> Contact Us</a>
-            </div>
+<!-- DOC NAV -->
+
+<main class="wrap">
+
+  <!-- TOC -->
+  <div class="toc">
+    <p class="toc-label">Table of Contents</p>
+    <div class="toc-grid">
+      <a class="toc-link" href="#s1"><span class="toc-n">1</span>Who We Are</a>
+      <a class="toc-link" href="#s2"><span class="toc-n">2</span>Data We Collect</a>
+      <a class="toc-link" href="#s3"><span class="toc-n">3</span>App Permissions</a>
+      <a class="toc-link" href="#s4"><span class="toc-n">4</span>How We Use Your Data</a>
+      <a class="toc-link" href="#s5"><span class="toc-n">5</span>Who We Share Data With</a>
+      <a class="toc-link" href="#s6"><span class="toc-n">6</span>Data Retention</a>
+      <a class="toc-link" href="#s7"><span class="toc-n">7</span>Account Deletion</a>
+      <a class="toc-link" href="#s8"><span class="toc-n">8</span>Your Rights</a>
+      <a class="toc-link" href="#s9"><span class="toc-n">9</span>Children's Privacy</a>
+      <a class="toc-link" href="#s10"><span class="toc-n">10</span>Third-Party Services</a>
+      <a class="toc-link" href="#s11"><span class="toc-n">11</span>Security</a>
+      <a class="toc-link" href="#s12"><span class="toc-n">12</span>Policy Updates</a>
+      <a class="toc-link" href="#s13"><span class="toc-n">13</span>Contact Us</a>
+    </div>
+  </div>
+
+  <!-- 1. WHO WE ARE -->
+  <section class="card" id="s1">
+    <p class="card-eye">Section 01</p>
+    <h2>Who We Are &amp; Scope of This Policy</h2>
+    <p>GigsNetwork is a two-sided gig marketplace mobile application operated by <strong>Mugesh Siva</strong>, based in <strong>Chennai, Tamil Nadu, India</strong>. The app connects Workers seeking short-term event and hospitality work with Recruiters who post such opportunities.</p>
+    <p>This Privacy Policy describes every category of personal data we collect when you use the GigsNetwork Android application, the purposes for which we use it, who we share it with, how long we keep it, and the rights you have over it.</p>
+    <div class="alert accent">
+      <span class="alert-icon">ℹ️</span>
+      <div>
+        <p class="alert-title">Platform Intermediary Notice</p>
+        <p class="alert-body">GigsNetwork acts strictly as a marketplace intermediary. We are not an employer, staffing agency, or payment processor. We facilitate connections between Workers and Recruiters but are not a party to any employment or payment agreement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. DATA WE COLLECT -->
+  <section class="card" id="s2">
+    <p class="card-eye">Section 02</p>
+    <h2>Data We Collect</h2>
+    <p>We collect only what is necessary to operate the platform. Below is the complete inventory of every data point we collect.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Point</th>
+          <th>Description</th>
+          <th>Purpose</th>
+          <th>Required?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Phone Number</td>
+          <td>Your mobile number, verified via OTP through Firebase Authentication. No password is stored.</td>
+          <td>Account creation &amp; login</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Full Name</td>
+          <td>Your legal name, displayed on your profile to other users you interact with.</td>
+          <td>Identity &amp; trust</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>Used solely for job eligibility filtering. Certain jobs may specify a gender requirement (bona fide occupational qualification). Not used for advertising or profiling.</td>
+          <td>Job eligibility matching</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>State &amp; City</td>
+          <td>You manually select from a dropdown list. We do <strong>not</strong> access your device's GPS or real-time location at any point.</td>
+          <td>Show nearby jobs</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Profile Picture</td>
+          <td>A photo you optionally choose to upload. Stored in Firebase Cloud Storage and visible on your profile.</td>
+          <td>Profile display</td>
+          <td><span class="pill pill-opt">Optional</span></td>
+        </tr>
+        <tr>
+          <td>Role</td>
+          <td>Whether you operate as a Worker, Recruiter, or both. A single account can hold both roles.</td>
+          <td>Platform feature access</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Organization Name</td>
+          <td>For Recruiters only — the business name shown on job listings.</td>
+          <td>Job listing identity</td>
+          <td><span class="pill pill-opt">Recruiter only</span></td>
+        </tr>
+        <tr>
+          <td>Job Postings &amp; Enrollments</td>
+          <td>Jobs posted (Recruiter), jobs enrolled in, attendance records, cancellations, and completion history (Worker).</td>
+          <td>Core marketplace function</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Chat Messages</td>
+          <td>Text messages (max 500 chars) sent in job-specific group chats. Stored and may be reviewed by admins for moderation.</td>
+          <td>Job coordination &amp; moderation</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Ratings &amp; Reviews</td>
+          <td>1–5 star ratings given by Workers to Recruiters and vice versa after job completion.</td>
+          <td>Trust &amp; accountability</td>
+          <td><span class="pill pill-req">Required</span></td>
+        </tr>
+        <tr>
+          <td>Reports</td>
+          <td>When you report a user, job, or chat — includes report category and explanation (max 1,000 chars).</td>
+          <td>Safety &amp; moderation</td>
+          <td><span class="pill pill-opt">If submitted</span></td>
+        </tr>
+        <tr>
+          <td>FCM Token</td>
+          <td>A device-specific Firebase Cloud Messaging token generated automatically. Used only to deliver push notifications to your device.</td>
+          <td>Push notifications</td>
+          <td><span class="pill pill-req">Automatic</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert info">
+      <span class="alert-icon">🚫</span>
+      <div>
+        <p class="alert-title">What We Do NOT Collect</p>
+        <p class="alert-body">We do not collect GPS or real-time location data, contacts, browsing history, financial details, government IDs, passwords, biometric data, or advertising identifiers. We do not use cookies in the mobile app.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. APP PERMISSIONS -->
+  <section class="card" id="s3">
+    <p class="card-eye">Section 03</p>
+    <h2>App Permissions We Request</h2>
+    <p>GigsNetwork requests only the permissions necessary for core functionality. All optional permissions are requested at the time they are first needed and can be declined without affecting core features.</p>
+
+    <div class="perm-list">
+      <div class="perm-row">
+        <div class="perm-icon">📱</div>
+        <div>
+          <p class="perm-name">Phone / SMS — Auto-fill OTP</p>
+          <p class="perm-text">Used exclusively to receive and auto-fill the OTP sent during sign-in. We do not read any other SMS messages on your device.</p>
+          <span class="perm-badge req-badge">Required — Authentication cannot work without this</span>
         </div>
+      </div>
+      <div class="perm-row">
+        <div class="perm-icon">🔔</div>
+        <div>
+          <p class="perm-name">Push Notifications (POST_NOTIFICATIONS)</p>
+          <p class="perm-text">Used to send job alerts, chat notifications, and enrollment updates. You can manage or disable notifications any time in app settings or device system settings.</p>
+          <span class="perm-badge req-badge">Required for job &amp; chat alerts</span>
+        </div>
+      </div>
+      <div class="perm-row">
+        <div class="perm-icon">📷</div>
+        <div>
+          <p class="perm-name">Camera &amp; Photo Library (READ_MEDIA_IMAGES)</p>
+          <p class="perm-text">Used only if you choose to upload a profile picture. You can take a new photo or select from your gallery. The app works fully without a profile photo.</p>
+          <span class="perm-badge opt-badge">Optional — Core features work without it</span>
+        </div>
+      </div>
+      <div class="perm-row">
+        <div class="perm-icon">🌐</div>
+        <div>
+          <p class="perm-name">Internet Access (INTERNET)</p>
+          <p class="perm-text">Standard permission required for all communication with Firebase services (Authentication, Firestore, Cloud Storage, FCM). The app cannot function offline.</p>
+          <span class="perm-badge req-badge">Required — Standard for all networked apps</span>
+        </div>
+      </div>
     </div>
 
-    <main class="main">
-
-        <!-- 1. INTRODUCTION -->
-        <section class="section" id="s1">
-            <div class="section-header">
-                <div class="section-num">1</div>
-                <h2>Introduction &amp; Scope</h2>
-            </div>
-            <p>GigsNetwork ("we", "our", "us") operates a two-sided marketplace mobile application that connects <strong>Workers</strong> seeking short-term, gig, and event-based employment with <strong>Recruiters</strong> who post and manage such opportunities.</p>
-            <p>This Privacy Policy explains in full detail what personal data we collect when you use our Android application, why we collect it, how we use and share it, how long we retain it, and what rights you have over your data. Please read it carefully. By creating an account or using the app, you agree to the practices described here.</p>
-            <div class="callout accent">
-                <div class="callout-title">Important Notice</div>
-                <p>GigsNetwork is a <strong>platform intermediary</strong>. We facilitate connections between Workers and Recruiters but are not a party to any employment relationship, wage agreement, or on-site conduct. Specific obligations regarding payments, safety, and conduct are detailed in Section 6.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 2. INFORMATION WE COLLECT -->
-        <section class="section" id="s2">
-            <div class="section-header">
-                <div class="section-num">2</div>
-                <h2>Information We Collect</h2>
-            </div>
-            <p>We only collect data that is necessary for the app to function as described. Below is a complete breakdown of every category of data we collect.</p>
-
-            <div class="data-grid">
-                <div class="data-card required">
-                    <div class="data-card-label">Account</div>
-                    <div class="data-card-title">Phone Number</div>
-                    <p>Your mobile phone number is the <strong>only</strong> way to create and access a GigsNetwork account. It is used exclusively for OTP-based authentication. No email or password is used.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Account</div>
-                    <div class="data-card-title">Full Name</div>
-                    <p>Your name is <strong>mandatory</strong>. It is displayed on your profile and shared with Recruiters or Workers you interact with through job enrollments.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Account</div>
-                    <div class="data-card-title">Gender</div>
-                    <p>Your gender is <strong>mandatory</strong>. It is used <strong>solely</strong> to determine your eligibility for jobs that specify a gender requirement (e.g., a recruiter may post a job open only to female workers). It is not used for advertising or profiling.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Account</div>
-                    <div class="data-card-title">Role</div>
-                    <p>Whether you operate as a Worker, Recruiter, or both. A single account can hold both roles and switch between them.</p>
-                </div>
-                <div class="data-card optional">
-                    <div class="data-card-label">Account</div>
-                    <div class="data-card-title">Profile Picture</div>
-                    <p>An optional photo you choose to upload. Displayed on your profile and visible to the other party in job enrollments.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Location</div>
-                    <div class="data-card-title">State &amp; City</div>
-                    <p>You manually select your state and city from a list. <strong>We do not access your device's GPS or real-time location at any time.</strong> This is used to surface relevant nearby jobs.</p>
-                </div>
-                <div class="data-card optional">
-                    <div class="data-card-label">Recruiter Only</div>
-                    <div class="data-card-title">Organization Name</div>
-                    <p>The name of the organization or business under which a Recruiter posts jobs. Visible to Workers browsing job listings.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Activity</div>
-                    <div class="data-card-title">Jobs &amp; Enrollments</div>
-                    <p>Jobs you post as a Recruiter, jobs you enroll in as a Worker, attendance records, and ratings you give or receive after job completion.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Communications</div>
-                    <div class="data-card-title">Chat Messages</div>
-                    <p>Messages you send inside job-specific group chats. These are stored and may be reviewed by platform administrators for moderation purposes.</p>
-                </div>
-                <div class="data-card required">
-                    <div class="data-card-label">Device</div>
-                    <div class="data-card-title">FCM Token</div>
-                    <p>A Firebase Cloud Messaging token unique to your device installation. Used only to deliver push notifications about jobs, chats, and platform updates.</p>
-                </div>
-            </div>
-
-            <div class="callout accent">
-                <div class="callout-title">About Device PIN / Screen Lock</div>
-                <p>During the account deletion process, the operating system may prompt you to confirm your device screen lock (PIN, Password, or Pattern). <strong>This verification is performed entirely and exclusively on your device by the operating system itself.</strong> GigsNetwork never receives, stores, transmits, or has any access to your device PIN, password, or biometric data.</p>
-            </div>
-
-            <div class="callout info">
-                <div class="callout-title">We Do Not Collect</div>
-                <p>We do not collect GPS or real-time location. We do not collect browsing history, contacts, financial details, government IDs, or any data not listed above. We do not use cookies in the mobile app.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 3. APP PERMISSIONS -->
-        <section class="section" id="s3">
-            <div class="section-header">
-                <div class="section-num">3</div>
-                <h2>App Permissions We Request</h2>
-            </div>
-            <p>GigsNetwork requests the following Android permissions. Each permission is requested at the time it is first needed and you may decline optional permissions. Declining optional permissions may limit certain features.</p>
-
-            <div class="perm-list">
-                <div class="perm-row">
-                    <div class="perm-icon">📱</div>
-                    <div class="perm-body">
-                        <div class="perm-name">Phone / SMS (Receive OTP)</div>
-                        <div class="perm-purpose">Used exclusively to receive and auto-fill the one-time password (OTP) sent to your phone number during sign-in and account verification. We do not read any other SMS messages on your device.</div>
-                        <span class="perm-note">Required — Core authentication cannot function without this</span>
-                    </div>
-                </div>
-                <div class="perm-row">
-                    <div class="perm-icon">🔔</div>
-                    <div class="perm-body">
-                        <div class="perm-name">Push Notifications</div>
-                        <div class="perm-purpose">Used to send you alerts about new job postings matching your location, enrollment confirmations, messages in group chats, job completion reminders, and important platform updates. You can manage notification preferences within the app's settings at any time.</div>
-                        <span class="perm-note">Required for job alerts and chat notifications</span>
-                    </div>
-                </div>
-                <div class="perm-row">
-                    <div class="perm-icon">📷</div>
-                    <div class="perm-body">
-                        <div class="perm-name">Camera &amp; Photo Library</div>
-                        <div class="perm-purpose">Used to let you take a photo or select one from your gallery to set as your profile picture. Recruiters may also use this to attach images to job postings. Photos are uploaded to secure Firebase Cloud Storage and linked to your account.</div>
-                        <span class="perm-note">Optional — App functions without a profile photo</span>
-                    </div>
-                </div>
-                <div class="perm-row">
-                    <div class="perm-icon">🌐</div>
-                    <div class="perm-body">
-                        <div class="perm-name">Internet Access</div>
-                        <div class="perm-purpose">Standard permission required for all network communication with Firebase Authentication, Firestore, and Cloud Storage. The app cannot function without internet access.</div>
-                        <span class="perm-note">Required — Standard for all apps</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="callout info">
-                <div class="callout-title">No GPS / Location Permission</div>
-                <p>GigsNetwork does <strong>not</strong> request GPS or fine/coarse location access. Your location is set manually by selecting a State and City from a dropdown list. This is an intentional privacy-preserving design decision.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 4. HOW WE USE YOUR DATA -->
-        <section class="section" id="s4">
-            <div class="section-header">
-                <div class="section-num">4</div>
-                <h2>How We Use Your Information</h2>
-            </div>
-            <p>We use the data described in Section 2 strictly to provide, maintain, and improve the GigsNetwork platform. We do not use your data for advertising, behavioural profiling, or any purpose not listed below.</p>
-
-            <table class="use-table">
-                <thead>
-                    <tr>
-                        <th>Purpose</th>
-                        <th>Data Used</th>
-                        <th>Legal Basis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Account creation &amp; authentication</td>
-                        <td>Phone number, OTP</td>
-                        <td><span class="pill pill-green">Contract</span></td>
-                    </tr>
-                    <tr>
-                        <td>Displaying your profile to other users</td>
-                        <td>Name, photo, role, ratings</td>
-                        <td><span class="pill pill-green">Contract</span></td>
-                    </tr>
-                    <tr>
-                        <td>Job eligibility matching</td>
-                        <td>Gender, state, city</td>
-                        <td><span class="pill pill-green">Contract</span></td>
-                    </tr>
-                    <tr>
-                        <td>Facilitating group chat communication</td>
-                        <td>Name, messages, job data</td>
-                        <td><span class="pill pill-green">Contract</span></td>
-                    </tr>
-                    <tr>
-                        <td>Sending push notifications</td>
-                        <td>FCM token</td>
-                        <td><span class="pill pill-blue">Consent</span></td>
-                    </tr>
-                    <tr>
-                        <td>Rating system &amp; trust verification</td>
-                        <td>Ratings given/received, job history</td>
-                        <td><span class="pill pill-green">Contract</span></td>
-                    </tr>
-                    <tr>
-                        <td>Platform safety &amp; abuse prevention</td>
-                        <td>Reports, messages, activity data</td>
-                        <td><span class="pill pill-red">Legitimate Interest</span></td>
-                    </tr>
-                    <tr>
-                        <td>Legal compliance &amp; law enforcement cooperation</td>
-                        <td>Any relevant data as required</td>
-                        <td><span class="pill pill-red">Legal Obligation</span></td>
-                    </tr>
-                    <tr>
-                        <td>Account deletion processing</td>
-                        <td>Full user record</td>
-                        <td><span class="pill pill-green">Contract</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 5. INFORMATION SHARING -->
-        <section class="section" id="s5">
-            <div class="section-header">
-                <div class="section-num">5</div>
-                <h2>Information Sharing &amp; Disclosure</h2>
-            </div>
-            <p>We do <strong>not</strong> sell, rent, or trade your personal information to third parties for any commercial purpose. Data is shared only in the limited circumstances described below.</p>
-
-            <div class="step-list">
-                <div class="step-item">
-                    <div class="step-badge">A</div>
-                    <div class="step-text"><strong>Between Workers and Recruiters (Platform Function):</strong> When a Worker enrolls in a job, their <strong>name, profile picture, and phone number</strong> are shared with the Recruiter to facilitate coordination. Conversely, a Recruiter's <strong>organization name, phone number, and ratings</strong> are visible to Workers viewing their job postings.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">B</div>
-                    <div class="step-text"><strong>Platform Administrators:</strong> Our internal admin panel has access to user data, job data, and chat histories strictly for the purposes of content moderation, responding to reports, and preventing abuse. Access is restricted and logged.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">C</div>
-                    <div class="step-text"><strong>Firebase / Google (Service Provider):</strong> We use Google Firebase for authentication, database, storage, and notifications. Firebase acts as a data processor on our behalf and is subject to Google's privacy commitments. See Section 10 for details.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">D</div>
-                    <div class="step-text"><strong>Law Enforcement / Legal Process:</strong> We will disclose data to government authorities, courts, or regulators when legally compelled to do so by a valid court order, subpoena, or applicable law. We will notify affected users where legally permitted to do so.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">E</div>
-                    <div class="step-text"><strong>Protection of Rights:</strong> We may disclose data where we believe in good faith it is necessary to investigate fraud, prevent imminent harm to a person, or protect the legal rights of GigsNetwork, our users, or the public.</div>
-                </div>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 6. PLATFORM CONDUCT & DISPUTES -->
-        <section class="section" id="s6">
-            <div class="section-header">
-                <div class="section-num">6</div>
-                <h2>Platform Conduct, Disputes &amp; Safety</h2>
-            </div>
-            <p>GigsNetwork is a marketplace platform. While we provide tools to facilitate trust and safety, we are not an employer or contracting party in any gig arrangement. This section explains how we handle key edge cases.</p>
-
-            <div class="callout warn">
-                <div class="callout-title">⚠ Payment Disputes (Non-Payment by Recruiter)</div>
-                <p>GigsNetwork does <strong>not process, hold, or guarantee payments</strong> between Workers and Recruiters. All payment arrangements are agreed upon directly between the parties as stated in the job posting.</p>
-                <p>If a Recruiter fails to pay, we strongly encourage Workers to: (1) submit a report through the in-app reporting feature, (2) rate the Recruiter accordingly so other Workers are informed, and (3) seek resolution through local labour authorities or legal channels if necessary. Persistent non-payment reports may result in the Recruiter's account being reviewed or banned by our administrators.</p>
-                <p><strong>Data we collect related to disputes:</strong> Job posting details, enrollment records, ratings, and any reports submitted will be retained and may be provided to relevant authorities in the event of a formal dispute.</p>
-            </div>
-
-            <div class="callout danger">
-                <div class="callout-title">🚨 Workplace Abuse, Harassment &amp; Misconduct</div>
-                <p>GigsNetwork has zero tolerance for abuse, harassment, discrimination, or assault on the platform or at any job site facilitated through our platform. If you experience or witness such conduct:</p>
-                <ul class="custom-list" style="margin-top:8px;">
-                    <li>If you are in immediate danger, <strong>contact local emergency services (Police/911) first.</strong> Do not wait.</li>
-                    <li>Use the in-app <strong>Report</strong> feature on the job, chat, or user involved to file a formal report with GigsNetwork.</li>
-                    <li>Reports of misconduct are reviewed by our moderation team and may result in warnings, suspensions, or permanent bans.</li>
-                    <li>We retain reports, associated messages, and account data related to misconduct and may share them with law enforcement authorities when appropriate.</li>
-                </ul>
-            </div>
-
-            <div class="callout danger">
-                <div class="callout-title">🚨 Illegal Activity</div>
-                <p>Any use of GigsNetwork to facilitate, advertise, or coordinate illegal activity (including but not limited to fraud, trafficking, unlicensed work, or any criminal offence) is strictly prohibited and will result in immediate account termination.</p>
-                <p>If we become aware of illegal activity conducted on or through the platform, we are obligated to and will <strong>cooperate fully with law enforcement agencies</strong>, including disclosing user data, chat histories, and activity records as required by law. Users involved will not be notified in advance if disclosure is legally prohibited.</p>
-            </div>
-
-            <div class="callout info">
-                <div class="callout-title">Our Reporting &amp; Moderation System</div>
-                <p>Any user can report a job posting, a chat message, or another user directly within the app. Reports are stored in our database and reviewed by platform administrators who have the authority to update report status, ban users, force-close jobs, or lock chats. We aim to respond to serious safety reports promptly.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 7. USER-GENERATED CONTENT -->
-        <section class="section" id="s7">
-            <div class="section-header">
-                <div class="section-num">7</div>
-                <h2>User-Generated Content</h2>
-            </div>
-            <p>GigsNetwork allows users to create content including job postings, messages in group chats, and ratings. Please be aware of the following:</p>
-            <ul class="custom-list">
-                <li><strong>Group Chat Messages:</strong> Every job has a single, job-linked group chat. All messages are stored in our database and are visible to all enrolled Workers and the Recruiter for that job. Messages may also be reviewed by platform administrators for moderation purposes.</li>
-                <li><strong>Ratings:</strong> Ratings and any associated feedback you submit about a Worker or Recruiter are stored permanently and displayed publicly on that user's profile.</li>
-                <li><strong>Job Postings:</strong> Information entered into job postings (title, description, location, pay) is visible to all Workers on the platform searching for work in the relevant area.</li>
-                <li><strong>Account Deletion &amp; Orphaned Content:</strong> If you delete your account, your messages and enrollment records will remain as de-identified orphaned records (no longer linked to an active profile) to preserve the historical integrity of job records for other users. Ratings you received remain but your identifying information is removed.</li>
-            </ul>
-            <div class="callout warn">
-                <div class="callout-title">Do Not Share Sensitive Information in Chats</div>
-                <p>Do not share bank account details, passwords, government ID numbers, or other sensitive personal information in the group chat. GigsNetwork is not liable for any harm resulting from sensitive information voluntarily shared by users in chat messages.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 8. DATA RETENTION & DELETION -->
-        <section class="section" id="s8">
-            <div class="section-header">
-                <div class="section-num">8</div>
-                <h2>Data Retention &amp; Account Deletion</h2>
-            </div>
-            <p>We retain your personal information for as long as your account is active or as needed to provide the services, comply with our legal obligations, resolve disputes, and enforce our agreements.</p>
-
-            <div class="callout accent">
-                <div class="callout-title">Your Right to Delete Your Account</div>
-                <p>You may permanently delete your GigsNetwork account at any time through <strong>Profile → Settings → Delete Account</strong> within the app. This right is available to all users and does not require contacting support.</p>
-            </div>
-
-            <p>When you choose to delete your account, the following happens:</p>
-            <div class="step-list">
-                <div class="step-item">
-                    <div class="step-badge">1</div>
-                    <div class="step-text"><strong>Immediate Deactivation:</strong> Your account is locked immediately. You will be signed out and unable to log back in.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">2</div>
-                    <div class="step-text"><strong>Profile Deletion:</strong> Your user profile including name, phone number, gender, profile picture, and location data is <strong>permanently and irreversibly erased</strong> from our active databases and Firebase Authentication records.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">3</div>
-                    <div class="step-text"><strong>FCM Token Removal:</strong> Your device push notification token is removed, and you will no longer receive any notifications from GigsNetwork.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">4</div>
-                    <div class="step-text"><strong>Orphaned Historical Records:</strong> Your previous job enrollments, chat messages, and attendance records will remain in our database as <strong>de-identified, orphaned records</strong> (with no link to any active profile) to maintain the data integrity and historical accuracy of records for other users who participated in those jobs or chats. These records cannot be traced back to you after deletion.</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-badge">5</div>
-                    <div class="step-text"><strong>This action is irreversible.</strong> There is no grace period or recovery option. If you wish to use GigsNetwork again after deletion, you must create a new account.</div>
-                </div>
-            </div>
-
-            <div class="callout warn">
-                <div class="callout-title">Retention for Legal Obligations</div>
-                <p>Notwithstanding the above, we may be required to retain certain data (including records related to disputes, abuse reports, or legal proceedings) for longer periods as mandated by applicable law, even after account deletion. Such data is held in secure, restricted archives and not used for any operational purpose.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 9. YOUR RIGHTS -->
-        <section class="section" id="s9">
-            <div class="section-header">
-                <div class="section-num">9</div>
-                <h2>Your Rights</h2>
-            </div>
-            <p>Depending on your jurisdiction, you may have the following rights regarding your personal data. To exercise any of these rights, please contact us at the address provided in Section 14.</p>
-
-            <ul class="custom-list">
-                <li><strong>Right to Access:</strong> You may request a copy of the personal data we hold about you.</li>
-                <li><strong>Right to Correction:</strong> You may correct inaccurate information (such as name or location) directly within the app's Profile settings at any time without contacting us.</li>
-                <li><strong>Right to Deletion:</strong> You may delete your account and associated personal data at any time via the in-app account deletion option described in Section 8.</li>
-                <li><strong>Right to Withdraw Consent (Notifications):</strong> You may withdraw consent for push notifications at any time through the app's notification settings or your device's system settings. This will not affect your ability to use the core features of the app.</li>
-                <li><strong>Right to Portability:</strong> You may request a structured copy of your personal data in a machine-readable format by contacting us.</li>
-                <li><strong>Right to Object:</strong> You may object to the processing of your data based on legitimate interest by contacting us. We will review each objection and respond within a reasonable time.</li>
-            </ul>
-            <p style="margin-top:14px;">We will respond to all verifiable requests within <strong>30 days</strong>. In complex cases, we may extend this period by an additional 30 days with notice.</p>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 10. THIRD-PARTY SERVICES -->
-        <section class="section" id="s10">
-            <div class="section-header">
-                <div class="section-num">10</div>
-                <h2>Third-Party Services</h2>
-            </div>
-            <p>GigsNetwork is built on Google Firebase, a platform as a service (PaaS) provided by Google LLC. Firebase acts as a data sub-processor on our behalf. The following Firebase services are used:</p>
-
-            <ul class="custom-list">
-                <li><strong>Firebase Authentication:</strong> Handles phone number OTP sign-in. Your phone number is processed by Firebase to send and verify OTP codes.</li>
-                <li><strong>Cloud Firestore:</strong> Our primary database. All user profiles, jobs, enrollments, chats, attendance records, and reports are stored here.</li>
-                <li><strong>Firebase Cloud Storage:</strong> Stores uploaded profile pictures and job images.</li>
-                <li><strong>Firebase Cloud Messaging (FCM):</strong> Delivers push notifications to your device using your FCM token.</li>
-            </ul>
-
-            <p>Google's processing of data through Firebase is governed by the <strong>Google Cloud Platform Terms of Service</strong> and <strong>Google's Privacy Policy</strong>. We encourage you to review their policies at <strong>policies.google.com</strong>.</p>
-            <p>We use <strong>no other third-party SDKs, analytics platforms, advertising networks, or data brokers</strong> in the GigsNetwork mobile application.</p>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 11. CHILDREN'S PRIVACY -->
-        <section class="section" id="s11">
-            <div class="section-header">
-                <div class="section-num">11</div>
-                <h2>Children's Privacy</h2>
-            </div>
-            <p>GigsNetwork is designed for adults seeking or offering employment opportunities. <strong>The app is not directed at, intended for, or designed to be used by anyone under the age of 18 years.</strong></p>
-            <p>We do not knowingly collect personal information from users under the age of 18. If we discover or are notified that we have inadvertently collected data from a minor, we will immediately delete that account and all associated data.</p>
-            <p>If you are a parent or guardian and believe your child has registered an account on GigsNetwork, please contact us immediately at <strong>support@gigsnetwork.com</strong> so we can take prompt action.</p>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 12. SECURITY -->
-        <section class="section" id="s12">
-            <div class="section-header">
-                <div class="section-num">12</div>
-                <h2>Security</h2>
-            </div>
-            <p>We implement industry-standard technical and organisational measures to protect your data against unauthorised access, disclosure, alteration, or destruction:</p>
-            <ul class="custom-list">
-                <li><strong>Firebase Authentication:</strong> All sign-in is handled via Firebase's OTP system. No passwords are stored by GigsNetwork.</li>
-                <li><strong>Firestore Security Rules:</strong> Database access is governed by server-side security rules that ensure users can only access data they are authorised to see.</li>
-                <li><strong>HTTPS / TLS Encryption:</strong> All data transmitted between the app and our backend is encrypted in transit using TLS.</li>
-                <li><strong>Admin Access Controls:</strong> Our administrative panel is protected by JWT-based session authentication and accessible only to authorised personnel.</li>
-                <li><strong>Data Minimisation:</strong> We collect only the minimum data necessary to operate the platform.</li>
-            </ul>
-            <div class="callout warn">
-                <div class="callout-title">Limitation of Security Guarantee</div>
-                <p>Despite our best efforts, no method of internet transmission or electronic storage is 100% secure. We cannot guarantee the absolute security of your data. In the event of a data breach that affects your rights and freedoms, we will notify affected users and relevant authorities as required by applicable law.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 13. CHANGES -->
-        <section class="section" id="s13">
-            <div class="section-header">
-                <div class="section-num">13</div>
-                <h2>Changes to This Policy</h2>
-            </div>
-            <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes, we will:</p>
-            <ul class="custom-list">
-                <li>Update the "Last Updated" date at the top of this page.</li>
-                <li>Post the revised policy at the same URL and within the app's settings.</li>
-                <li>Where required by law or where changes are significant, notify you via a push notification or an in-app notice prompting you to review the updated policy.</li>
-            </ul>
-            <p>Your continued use of the app after a policy update constitutes your acceptance of the revised terms. If you do not agree with the updated policy, you must stop using the app and may delete your account as described in Section 8.</p>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- 14. CONTACT -->
-        <section class="section" id="s14">
-            <div class="section-header">
-                <div class="section-num">14</div>
-                <h2>Contact Us</h2>
-            </div>
-            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or the way we handle your data, please contact our team. We are committed to resolving concerns promptly and transparently.</p>
-        </section>
-
-    </main>
-
-    <!-- FOOTER CONTACT CARD -->
-    <div class="page-footer">
-        <div class="footer-card">
-            <div class="footer-left">
-                <h3>Reach Out to GigsNetwork</h3>
-                <p>We typically respond to privacy-related requests within 30 days.</p>
-            </div>
-            <div class="footer-contact">
-                <div class="contact-row">
-                    <span>📧 Email</span>
-                    <a href="mailto:support@gigsnetwork.com">support@gigsnetwork.com</a>
-                </div>
-                <div class="contact-row">
-                    <span>📍 Policy</span>
-                    <span>Privacy Policy — GigsNetwork, v1.0</span>
-                </div>
-                <div class="contact-row">
-                    <span>📅 Effective</span>
-                    <span>May 31, 2026</span>
-                </div>
-            </div>
-        </div>
+    <div class="alert accent">
+      <span class="alert-icon">✅</span>
+      <div>
+        <p class="alert-title">No Location Permission</p>
+        <p class="alert-body">GigsNetwork does not request ACCESS_FINE_LOCATION or ACCESS_COARSE_LOCATION. Your city and state are set manually by you from a dropdown list — this is an intentional privacy-preserving design decision.</p>
+      </div>
     </div>
+  </section>
+
+  <!-- 4. HOW WE USE DATA -->
+  <section class="card" id="s4">
+    <p class="card-eye">Section 04</p>
+    <h2>How We Use Your Information</h2>
+    <p>We use your data strictly to provide and improve the GigsNetwork platform. We never use your data for advertising, behavioural profiling, or any purpose not described below.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Purpose</th><th>Data Used</th><th>Basis</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Account creation &amp; login</td><td>Phone number, OTP</td><td>Contract performance</td></tr>
+        <tr><td>Displaying your profile</td><td>Name, photo, role, ratings</td><td>Contract performance</td></tr>
+        <tr><td>Job eligibility matching</td><td>Gender, state, city</td><td>Contract performance</td></tr>
+        <tr><td>Job-specific group chat</td><td>Name, messages, job data</td><td>Contract performance</td></tr>
+        <tr><td>Push notifications</td><td>FCM token</td><td>Consent</td></tr>
+        <tr><td>Ratings &amp; trust system</td><td>Ratings, job history</td><td>Contract performance</td></tr>
+        <tr><td>Safety, abuse prevention &amp; moderation</td><td>Reports, messages, activity</td><td>Legitimate interest</td></tr>
+        <tr><td>Legal compliance &amp; law enforcement</td><td>Any relevant data</td><td>Legal obligation</td></tr>
+        <tr><td>Processing account deletion</td><td>Full user record</td><td>Contract performance</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. SHARING -->
+  <section class="card" id="s5">
+    <p class="card-eye">Section 05</p>
+    <h2>Who We Share Your Data With</h2>
+    <p>We do <strong>not</strong> sell, rent, or trade your personal information. Data is shared only in these specific, limited circumstances:</p>
+
+    <ul class="blist">
+      <li><strong>Other Users (Platform Function):</strong> When you enroll in a job, your name, profile picture, and phone number are shared with the Recruiter. Recruiter's name, organisation, phone number, and ratings are visible to Workers viewing their listings. This is essential to the platform's purpose.</li>
+      <li><strong>Platform Administrators:</strong> Our admin team can access user profiles, job data, and chat histories strictly for moderation, investigating reports, and banning bad actors. Access is restricted and logged.</li>
+      <li><strong>Firebase / Google (Data Processor):</strong> GigsNetwork is built on Google Firebase. Firebase processes data on our behalf for authentication, database, storage, and notifications. See Section 10 for details.</li>
+      <li><strong>Law Enforcement / Legal Process:</strong> We will disclose user data to government authorities when legally required by a valid court order or applicable law. We will inform affected users where we are legally permitted to do so.</li>
+      <li><strong>Protection of Rights:</strong> We may disclose data in good faith when necessary to prevent imminent harm, investigate fraud, or protect the rights of GigsNetwork, our users, or the public.</li>
+    </ul>
+
+    <div class="alert warn">
+      <span class="alert-icon">⚠️</span>
+      <div>
+        <p class="alert-title">No Sale of Personal Data</p>
+        <p class="alert-body">GigsNetwork has never sold and will never sell your personal information to advertisers, data brokers, or any third party for commercial purposes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DATA RETENTION -->
+  <section class="card" id="s6">
+    <p class="card-eye">Section 06</p>
+    <h2>Data Retention</h2>
+    <p>We retain your personal information for as long as your account is active or as needed to provide services, comply with legal obligations, and resolve disputes.</p>
+
+    <ul class="blist">
+      <li><strong>Active Account Data</strong> (name, phone, gender, location, profile photo, FCM token): Retained for the lifetime of your account and permanently deleted upon account deletion.</li>
+      <li><strong>Chat Messages:</strong> Stored while the associated job is active and for a period thereafter. Chats become read-only 3 days after the job's end date. Upon account deletion, your messages are de-identified (stripped of your name and profile link).</li>
+      <li><strong>Job Enrollments &amp; Attendance Records:</strong> Retained as de-identified, anonymised records after account deletion to preserve historical integrity for the Recruiter's records.</li>
+      <li><strong>Ratings:</strong> Ratings you received remain on record after deletion but your identifying information is removed.</li>
+      <li><strong>Abuse Reports &amp; Legal Data:</strong> Data related to active moderation actions, disputes, or legal proceedings may be retained beyond deletion for a period required by applicable Indian law.</li>
+    </ul>
+  </section>
+
+  <!-- 7. ACCOUNT DELETION -->
+  <section class="card" id="s7">
+    <p class="card-eye">Section 07</p>
+    <h2>Account Deletion — Your Right to Erase</h2>
+
+    <div class="alert accent">
+      <span class="alert-icon">✅</span>
+      <div>
+        <p class="alert-title">You Can Delete Your Account At Any Time</p>
+        <p class="alert-body">You may permanently delete your GigsNetwork account at any time, free of charge, directly from within the app. No contact with support is needed.</p>
+      </div>
+    </div>
+
+    <h3>How to Delete Your Account (In-App)</h3>
+    <div class="steps">
+      <div class="step-item"><div class="step-n">1</div><p class="step-text">Open the GigsNetwork app and go to the <strong>Profile</strong> tab.</p></div>
+      <div class="step-item"><div class="step-n">2</div><p class="step-text">Tap <strong>Settings</strong>.</p></div>
+      <div class="step-item"><div class="step-n">3</div><p class="step-text">Tap <strong>"Delete Account"</strong>.</p></div>
+      <div class="step-item"><div class="step-n">4</div><p class="step-text">Your device's operating system may prompt you to verify your screen lock (PIN, fingerprint, or face). <strong>This is handled entirely by your device — GigsNetwork never receives, stores, or transmits your PIN or biometric data.</strong></p></div>
+      <div class="step-item"><div class="step-n">5</div><p class="step-text">Confirm the deletion. Your account is immediately and permanently deleted.</p></div>
+    </div>
+
+    <h3>Alternatively — Request Deletion by Email</h3>
+    <p>If you cannot access the app, you may also request account deletion by emailing us at <strong>hmsolutions.tech.pvt@gmail.com</strong> with the subject line <em>"Account Deletion Request"</em> and the phone number linked to your account. We will process your request within 30 days.</p>
+
+    <h3>What Is Permanently Deleted</h3>
+    <ul class="blist">
+      <li>Your phone number and Firebase Authentication record</li>
+      <li>Your full name, gender, and location data</li>
+      <li>Your profile picture (deleted from Firebase Cloud Storage)</li>
+      <li>Your device's FCM push notification token</li>
+    </ul>
+
+    <h3>What Remains (Anonymised Only)</h3>
+    <ul class="blist">
+      <li>Past job enrollment records — retained as de-identified orphaned records (linked to a job ID only, not to your identity) to preserve historical data for Recruiters.</li>
+      <li>Chat messages — may remain as text-only orphaned records within job chat history, with your name and profile link permanently removed.</li>
+      <li>Attendance records — anonymised for Recruiter reporting integrity.</li>
+    </ul>
+
+    <div class="alert danger">
+      <span class="alert-icon">⛔</span>
+      <div>
+        <p class="alert-title">Deletion is Permanent &amp; Irreversible</p>
+        <p class="alert-body">There is no grace period or recovery option. Once deleted, you cannot recover your account. To use GigsNetwork again, you must register a new account. A banned user cannot re-register with the same phone number.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. YOUR RIGHTS -->
+  <section class="card" id="s8">
+    <p class="card-eye">Section 08</p>
+    <h2>Your Rights</h2>
+    <p>Depending on applicable law (including India's Digital Personal Data Protection Act, 2023), you may have the following rights. To exercise any right, contact us at <strong>hmsolutions.tech.pvt@gmail.com</strong>.</p>
+
+    <ul class="blist">
+      <li><strong>Right to Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Right to Correction:</strong> Correct inaccurate data (name, location) directly within the app's Profile settings at any time — no need to contact us.</li>
+      <li><strong>Right to Deletion (Erasure):</strong> Delete your account and all associated personal data via in-app deletion (Section 7) or by emailing us.</li>
+      <li><strong>Right to Withdraw Consent:</strong> Withdraw consent for push notifications any time in the app's notification settings or your device's system settings — this does not affect core app features.</li>
+      <li><strong>Right to Data Portability:</strong> Request a structured, machine-readable copy of your personal data by contacting us.</li>
+      <li><strong>Right to Grievance Redressal:</strong> File a complaint or grievance with our Grievance Officer (see Section 13). We respond within 30 days.</li>
+    </ul>
+  </section>
+
+  <!-- 9. CHILDREN -->
+  <section class="card" id="s9">
+    <p class="card-eye">Section 09</p>
+    <h2>Children's Privacy</h2>
+    <p>GigsNetwork is a gig employment platform intended exclusively for adults. <strong>The app is not directed at, intended for, or designed to be used by anyone under the age of 18 years.</strong></p>
+    <p>We do not knowingly collect personal information from users under 18. If we discover or are notified that we have inadvertently collected data from a minor, we will immediately delete that account and all associated data without delay.</p>
+    <p>If you are a parent or guardian and believe your child has registered on GigsNetwork, please contact us immediately at <strong>hmsolutions.tech.pvt@gmail.com</strong>.</p>
+  </section>
+
+  <!-- 10. THIRD PARTIES -->
+  <section class="card" id="s10">
+    <p class="card-eye">Section 10</p>
+    <h2>Third-Party Services</h2>
+    <p>GigsNetwork is built on <strong>Google Firebase</strong> (provided by Google LLC), which acts as a data sub-processor on our behalf. We use the following Firebase services:</p>
+
+    <ul class="blist">
+      <li><strong>Firebase Authentication:</strong> Handles phone number OTP sign-in. Your phone number is processed by Firebase to send and verify OTP codes.</li>
+      <li><strong>Cloud Firestore:</strong> Our primary database. Stores all user profiles, jobs, enrollments, chat messages, attendance records, and reports.</li>
+      <li><strong>Firebase Cloud Storage:</strong> Stores profile pictures and any images attached to job postings.</li>
+      <li><strong>Firebase Cloud Messaging (FCM):</strong> Delivers push notifications to your device using your FCM token.</li>
+    </ul>
+
+    <p>Google's processing is governed by the <strong>Google Cloud Platform Terms of Service</strong> and <strong>Google's Privacy Policy</strong>, available at <strong>policies.google.com</strong>.</p>
+
+    <div class="alert info">
+      <span class="alert-icon">ℹ️</span>
+      <div>
+        <p class="alert-title">No Other Third Parties</p>
+        <p class="alert-body">We use no other third-party SDKs, analytics platforms, advertising networks, or data brokers in the GigsNetwork mobile application. Firebase is our only external service provider.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. SECURITY -->
+  <section class="card" id="s11">
+    <p class="card-eye">Section 11</p>
+    <h2>Security</h2>
+    <p>We implement industry-standard security measures to protect your data:</p>
+    <ul class="blist">
+      <li><strong>OTP-Only Authentication:</strong> No passwords are stored by GigsNetwork. All sign-in is handled via Firebase's secure OTP system.</li>
+      <li><strong>Firestore Security Rules:</strong> Server-side rules enforce that users can only access data they are authorised to see (e.g., only enrolled Workers can read a job's chat).</li>
+      <li><strong>Server-Side Validation:</strong> All critical writes (posting jobs, enrolling, rating) go through Firebase Cloud Functions — not directly from the client — preventing data manipulation.</li>
+      <li><strong>TLS / HTTPS Encryption:</strong> All data transmitted between the app and our backend is encrypted in transit.</li>
+      <li><strong>Data Minimisation:</strong> We collect only the minimum data necessary to operate the platform.</li>
+    </ul>
+    <div class="alert warn">
+      <span class="alert-icon">⚠️</span>
+      <div>
+        <p class="alert-title">No Absolute Guarantee</p>
+        <p class="alert-body">No method of internet transmission is 100% secure. In the event of a data breach that materially affects your rights, we will notify affected users and relevant authorities as required by applicable law.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. UPDATES -->
+  <section class="card" id="s12">
+    <p class="card-eye">Section 12</p>
+    <h2>Policy Updates</h2>
+    <p>We may update this Privacy Policy from time to time. When material changes are made, we will update the effective date, post the revised policy at the same URL, and notify you via a push notification or in-app notice.</p>
+    <p>Your continued use of the app after an update constitutes acceptance of the revised policy. If you do not agree, you may delete your account as described in Section 7.</p>
+  </section>
+
+  <!-- 13. CONTACT -->
+  <section class="card" id="s13">
+    <p class="card-eye">Section 13</p>
+    <h2>Contact &amp; Grievance Officer</h2>
+    <p>For any questions, concerns, requests, or grievances regarding this Privacy Policy or the handling of your personal data, please contact:</p>
+    <ul class="blist">
+      <li><strong>Grievance Officer / Data Controller:</strong> Mugesh Siva</li>
+      <li><strong>Email:</strong> hmsolutions.tech.pvt@gmail.com</li>
+      <li><strong>Location:</strong> Chennai, Tamil Nadu, India</li>
+      <li><strong>Response Time:</strong> Within 30 days of receiving a verifiable request</li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div class="wrap" style="padding-top:0;">
+  <div class="footer-card">
+    <div>
+      <h3>GigsNetwork — Privacy Policy</h3>
+      <p>We are committed to protecting your data and responding to concerns promptly.</p>
+    </div>
+    <div class="contact-links">
+      <div class="contact-row">📧 <a href="mailto:hmsolutions.tech.pvt@gmail.com">hmsolutions.tech.pvt@gmail.com</a></div>
+      <div class="contact-row">📍 Chennai, Tamil Nadu, India</div>
+      <div class="contact-row">📅 Effective: June 1, 2026 &nbsp;|&nbsp; v1.1</div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
